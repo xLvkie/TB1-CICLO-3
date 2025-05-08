@@ -39,14 +39,8 @@ void menuUsuario() {
 	cout << "3. Salir\n";
 }
 
-<<<<<<< HEAD
-//PRUEBA PARA HACER UN PULL REQUEST
-void menuVuelos() {
-	cout << "=====| Registro Vuelos |=====\n";
-=======
 void menuVuelos() {
 	cout << "=====|  Menu de Vuelos  |=====\n";
->>>>>>> 68a11a6 (PARTE 2)
 	cout << "1. Registrar nuevo vuelo\n";
 	cout << "2. Registro de vuelos\n";
 	cout << "3. Salir\n";

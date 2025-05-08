@@ -3,13 +3,10 @@
 #include "GestorVuelos.h"
 
 int main() {
-<<<<<<< HEAD
     portada();
-    system("pause>0");
-=======
+
     srand(time(0));
     
->>>>>>> 68a11a6 (PARTE 2)
     Lista<Pasajero*> pLista;
     
     GestorVuelos gestor;
