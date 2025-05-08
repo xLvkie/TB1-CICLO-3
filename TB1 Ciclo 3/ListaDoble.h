@@ -32,8 +32,7 @@ Lista<T>::~Lista() {
 		inicio = inicio->siguiente;
 		delete temp;
 		temp = nullptr;
-	}
-	delete inicio;
+	}	
 	inicio = nullptr;
 }
 
@@ -83,7 +82,8 @@ void Lista<T>::mostrar() {
 
 	int i = 1;
 	while (nodo != nullptr) {
-		Pasajero* psj = (Pasajero*)(nodo->dato); //Pasajero apunta a psj con valor Pasajero que apunta al dato del nodo
+		/*Pasajero* psj = (Pasajero*)(nodo->dato);*/ //Pasajero apunta a psj con valor Pasajero que apunta al dato del nodo
+		Pasajero* psj = static_cast<Pasajero*>(nodo->dato);
 		cout << "# " << i++ << ". ---\n";
 		cout << psj->toString();
 		cout << "->\n";
