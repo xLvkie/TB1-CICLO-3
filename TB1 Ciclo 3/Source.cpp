@@ -2,6 +2,8 @@
 #include "ListaDoble.h"
 
 int main() {
+    portada();
+    system("pause>0");
     Lista<Pasajero*> pLista;
     Lista<Vuelo*> vLista;
 
