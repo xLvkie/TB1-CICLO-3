@@ -3,6 +3,7 @@
 
 #include <map>
 #include <vector>
+#include<string>
 #include "Asientos.h"
 
 using namespace std;
@@ -20,7 +21,7 @@ public:
 		: origen(origen), destino(destino), diaIda(diaIda), mesIda(mesIda), diaVuelta(diaVuelta), mesVuelta(mesVuelta) {}
 	~Vuelo() {}
 
-    void mostrarTodosLosVuelos() {
+    void mostrarVuelo() {
         cout << "Vuelo de " << origen << " a " << destino << " - Ida: " << diaIda << "/" << mesIda
             << " - Vuelta: " << diaVuelta << "/" << mesVuelta << endl;
     }

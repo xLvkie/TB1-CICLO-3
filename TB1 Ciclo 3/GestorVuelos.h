@@ -1,5 +1,6 @@
 #include <map>
 #include <vector>
+#include <cctype>  //para poner en minuscula strings, me falta probarlo 
 #include "Vuelo.h" 
 
 using namespace std;
@@ -49,11 +50,11 @@ public:
         if (vuelosPorMes.count(mes) && vuelosPorMes[mes].count(dia)) {
             cout << "\n--- Vuelos para el " << dia << "/" << mes << " ---\n";
             for (Vuelo* v : vuelosPorMes[mes][dia]) {
-                v->mostrarTodosLosVuelos();
+                v->mostrarVuelo();
             }
         }
         else {
-            cout << "error\n";
+            cout << "No existen vuelos disponibles en esa fecha\n";
         }
     }
 
@@ -64,7 +65,7 @@ public:
                 if (vuelosPorMes[mes].count(dia)) {
                     cout << "\n--- Día " << dia << " ---\n";
                     for (Vuelo* v : vuelosPorMes[mes][dia]) {
-                        v->mostrarTodosLosVuelos();
+                        v->mostrarVuelo();
                     }
                 }
             }
@@ -72,6 +73,25 @@ public:
         else {
             cout << "error\n";
         }
+    }
+
+    void buscarVueloPorPaises(string p1, string p2) {
+        cout << "\n=== Todos los vuelos registrados ===\n";
+        for (auto itMes = vuelosPorMes.begin(); itMes != vuelosPorMes.end(); ++itMes) {
+            int mes = itMes->first;
+            map<int, vector<Vuelo*>>& dias = itMes->second;
+
+            for (auto itDia = dias.begin(); itDia != dias.end(); ++itDia) {
+                int dia = itDia->first;
+                vector<Vuelo*>& listaVuelos = itDia->second;
+
+                for (Vuelo* vuelo : listaVuelos) {
+                    if (vuelo->getOrigen() == p1 && vuelo->getDestino() == p2) {
+                        vuelo->mostrarVuelo(); 
+                    }
+                }
+            }
+        } 
     }
 
     void mostrarTodosLosVuelos() {
@@ -85,7 +105,7 @@ public:
                 vector<Vuelo*>& listaVuelos = itDia->second;
 
                 for (Vuelo* vuelo : listaVuelos) {
-                    vuelo->mostrarTodosLosVuelos();
+                    vuelo->mostrarVuelo();
                 }
             }
         }
