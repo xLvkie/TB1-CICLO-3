@@ -7,6 +7,8 @@
 
 using namespace std;
 
+// --- Clase Pasajero --- 
+
 class Pasajero {
 private:
 	string nombres;
@@ -17,6 +19,11 @@ public:
 	Pasajero(string nombres, string apellidos, string correo, int dni)
 		: nombres(nombres), apellidos(apellidos), correo(correo), dni(dni) {}
 	~Pasajero() {}
+
+    string getNombres() { return nombres; }
+    string getApellidos() { return apellidos; }
+    string getCorreo() { return correo; }
+    int getDni() { return dni; }
 
     string toString() {
         ostringstream ss;
@@ -33,7 +40,6 @@ public:
 Pasajero* pedirDatosPasajero() {
     string nombres, apellidos, correo;
     string dniStr;
-    int dni;
 
     do {
         cout << "Nombres: "; getline(cin, nombres);
@@ -57,9 +63,7 @@ Pasajero* pedirDatosPasajero() {
             cout << "DNI inválido.\n";
     } while (dniStr.length() != 8 || dniStr.find_first_not_of("0123456789") != string::npos);
 
-    dni = stoi(dniStr); // conversión segura ya que fue validado
-
-    return new Pasajero(nombres, apellidos, correo, dni);
+    return new Pasajero(nombres, apellidos, correo, stoi(dniStr));
 }
 
 #endif // !__PASAJERO__

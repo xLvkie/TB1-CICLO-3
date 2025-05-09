@@ -1,9 +1,16 @@
 #include "Sistema.h"
 #include "ListaDoble.h"
+#include "GestorVuelos.h"
 
 int main() {
+    portada();
+
+    srand(time(0));
+    
     Lista<Pasajero*> pLista;
-    Lista<Vuelo*> vLista;
+    
+    GestorVuelos gestor;
+    gestor.generarVuelosAutomaticos();
 
     //prueba para mostrar pasajeros wazaaa
     pLista.insertarInicio(new Pasajero("buki", "buki2", "hola@gmail.com", 75202855));
@@ -18,7 +25,7 @@ int main() {
         cin.ignore();
 
         switch (opcion) {
-        case 1: {
+        case 1: 
             int auxUser;
             do {
                 system("cls"); menuUsuario();
@@ -43,11 +50,15 @@ int main() {
                 }
             } while (auxUser != 3);
             break;
-        }
-        case 2: system("cls"); cout << "En trabajo\n"; system("pause"); break;
+        
+        case 2: system("cls"); //verificando
+            
+            //cuidado XD
+            gestor.mostrarTodosLosVuelos();
+
+            system("pause"); break;
         case 3: system("cls"); cout << "En trabajo\n"; system("pause"); break;
-        case 4: system("cls"); cout << "En trabajo\n"; system("pause"); break;
-        case 5: cout << "Gracias por usar el sistema\n"; system("pause"); break;
+        case 4: cout << "Gracias por usar el sistema\n"; system("pause"); break;
         default: cout << "Opción inválida\n"; system("pause"); break;
         }
 

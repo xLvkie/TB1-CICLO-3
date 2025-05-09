@@ -114,6 +114,8 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Asientos.h" />
+    <ClInclude Include="GestorVuelos.h" />
     <ClInclude Include="ListaDoble.h" />
     <ClInclude Include="Nodo.h" />
     <ClInclude Include="Pasajero.h" />
