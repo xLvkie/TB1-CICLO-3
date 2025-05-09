@@ -1,6 +1,4 @@
 ﻿  Source.cpp
-D:\OneDrive\Documents\Universidad\TB1-CICLO-3\TB1 Ciclo 3\Source.cpp(8,15): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
-  Generando código...
+D:\OneDrive\Documents\Universidad\TB1-CICLO-3\TB1 Ciclo 3\Source.cpp(9,15): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
   Source.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
   TB1 Ciclo 3.vcxproj -> D:\OneDrive\Documents\Universidad\TB1-CICLO-3\x64\Debug\TB1 Ciclo 3.exe

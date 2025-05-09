@@ -1,12 +1,13 @@
 #include "Sistema.h"
 #include "ListaDoble.h"
 #include "GestorVuelos.h"
+#include "Gestortxt.h"
 
 int main() {
     portada();
 
     srand(time(0));
-    
+
     Lista<Pasajero*> pLista;
     
     GestorVuelos gestor;
