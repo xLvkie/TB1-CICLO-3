@@ -1,6 +1,8 @@
+#include <conio.h>
 #include "Sistema.h"
 #include "ListaDoble.h"
 #include "GestorVuelo.h"
+#include "GestorReserva.h"
 
 int main() {
     srand(time(NULL));
@@ -10,20 +12,27 @@ int main() {
 
     GestorVuelo gVuelos;
     gVuelos.generarVuelosAutomaticos();
+    GestorReserva gReservas(gVuelos);
 
     //prueba para mostrar pasajeros wazaaa
     pLista.insertarInicio(new Pasajero("buki", "buki2", "hola@gmail.com", 75202855));
     pLista.insertarInicio(new Pasajero("buki2", "buki3", "hola2@gmail.com", 65202855));
     pLista.insertarInicio(new Pasajero("buki4", "buki5", "hola3@gmail.com", 55202855));
 
-    int opcion;
+    int opcion = 0;
     string destino, origen;
     Pasajero* nuevo;
 
     do {
+        system("cls"); portada(); cin.get();
+
         system("cls"); menuPrincipal();
         cin >> opcion;
-        cin.ignore(); 
+        cin.ignore();
+
+
+
+
         switch (opcion) {
         case 1: // -- Menu Usuario --
             int auxUser;
@@ -155,15 +164,34 @@ int main() {
                 case 10://pruebasss
                     //gVuelos.prueba();
                     int a;
-                    cout << "Codigo: "; cin >> a;
-                    gVuelos.mostrarUnVuelo(gVuelos.getVueloPorCodigo(a));
+                case 5:  
+                    gReservas.reservar();
+                    break;
+                case 6:  break;
+                default: cout << "Opción no válida\n"; system("pause"); break;
 
-                    system("pause"); break;
-                default: cout << "Opcion no valida\n"; system("pause"); break;
-                }
             } while (auxVuelo != 6);
             break;
-        case 3: system("cls"); cout << "En trabajo\n"; system("pause"); break;
+        case 3:
+            do
+            {
+                system("cls"); menuCheckin(); system("pause"); cin >> opcion;
+                switch (opcion)
+                {
+                case 1:
+                    gReservas.mostrarReservas();
+                    system("pause");
+                    break;
+                default:
+                    break;
+                }
+            } while (opcion != 2);
+                case 5: system("pause"); break;
+                default: cout << "Opción no válida\n"; system("pause"); break;
+                }
+            } while (auxVuelo != 3);
+            break;
+            
         case 4: cout << "Gracias por usar el sistema\n"; system("pause"); break;
         default: cout << "Opción inválida\n"; system("pause"); break;
         }

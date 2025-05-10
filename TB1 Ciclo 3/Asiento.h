@@ -11,6 +11,7 @@ private:
 	bool estado;
 	int idAsiento;
 public:
+	Asiento();
 	Asiento(char clasificacion, bool estado, int idAsiento) : clasificacion(clasificacion), estado(estado), idAsiento(idAsiento) {
 
 	};

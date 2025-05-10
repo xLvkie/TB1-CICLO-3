@@ -16,6 +16,7 @@ private:
     string correo;
     int dni;
 public:
+    Pasajero(){}
     Pasajero(string nombres, string apellidos, string correo, int dni)
         : nombres(nombres), apellidos(apellidos), correo(correo), dni(dni) {
     }
