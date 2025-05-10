@@ -57,6 +57,7 @@ void menuVuelos() {
 	cout << "4. Listar vuelos por Fecha Especifica\n";
 	cout << "5. Listar vuelos por Origen, Destino y Fecha de Ida\n";
 	cout << "6. Salir\n";
+	cout << "10. Correr las pruebas\n";
 }
 
 void tituloVuelo() {

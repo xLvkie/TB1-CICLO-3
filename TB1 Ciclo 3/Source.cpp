@@ -1,4 +1,3 @@
-#include <conio.h>
 #include "Sistema.h"
 #include "ListaDoble.h"
 #include "GestorVuelo.h"
@@ -6,7 +5,7 @@
 
 int main() {
     srand(time(NULL));
-    portada(); system("pause>0"); 
+    portada(); system("pause>0");
 
     Lista<Pasajero*> pLista;
 
@@ -24,14 +23,9 @@ int main() {
     Pasajero* nuevo;
 
     do {
-        system("cls"); portada(); cin.get();
-
         system("cls"); menuPrincipal();
         cin >> opcion;
         cin.ignore();
-
-
-
 
         switch (opcion) {
         case 1: // -- Menu Usuario --
@@ -117,7 +111,7 @@ int main() {
                     // -- Conclusión --
                     system("pause"); break;
                 case 4:
-                    int auxDia, auxMes; 
+                    int auxDia, auxMes;
                     cout << "=====|  Vuelos en Fecha  |=====\n";
                     do {
                         cout << "\nDia de Ida: "; cin >> auxDia; cout << endl;
@@ -129,9 +123,9 @@ int main() {
                         }
                     } while ((auxDia < 1 || auxDia > 31) || (auxMes < 1 || auxMes > 12));
 
-                    gVuelos.mostrarVuelosEnFecha(auxMes, auxDia); 
+                    gVuelos.mostrarVuelosEnFecha(auxMes, auxDia);
                     system("pause"); break;
-                case 5: 
+                case 5:
                     int auxOrigen2, auxDestino2, auxDiaIda, auxMesIda;
                     do {
                         system("cls"); tituloVuelo();
@@ -148,7 +142,7 @@ int main() {
                     destino = paises[auxDestino2 - 1];
 
                     do {
-                        cout << "\nDia de Ida: "; cin >> auxDiaIda; cout << endl; 
+                        cout << "\nDia de Ida: "; cin >> auxDiaIda; cout << endl;
                         selecionMesVuelo();
                         cout << "\nMes de Ida: "; cin >> auxMesIda;
 
@@ -163,20 +157,19 @@ int main() {
                     system("pause"); break;
                 case 10://pruebasss
                     //gVuelos.prueba();
-                    int a;
-                case 5:  
                     gReservas.reservar();
                     break;
-                case 6:  break;
                 default: cout << "Opción no válida\n"; system("pause"); break;
 
+                }
             } while (auxVuelo != 6);
-            break;
+                break;
         case 3:
+            int opc;
             do
             {
-                system("cls"); menuCheckin(); system("pause"); cin >> opcion;
-                switch (opcion)
+                system("cls"); menuCheckin(); cin >> opc;
+                switch (opc)
                 {
                 case 1:
                     gReservas.mostrarReservas();
@@ -185,18 +178,14 @@ int main() {
                 default:
                     break;
                 }
-            } while (opcion != 2);
-                case 5: system("pause"); break;
-                default: cout << "Opción no válida\n"; system("pause"); break;
-                }
-            } while (auxVuelo != 3);
+            } while (opc != 2);
             break;
-            
+
         case 4: cout << "Gracias por usar el sistema\n"; system("pause"); break;
         default: cout << "Opción inválida\n"; system("pause"); break;
         }
 
-    } while (opcion != 4);
+        } while (opcion != 4);
 
-    return 0;
-}
+        return 0;
+    }
