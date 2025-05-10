@@ -76,9 +76,7 @@ public:
         if (vuelosPorMes.count(mes) && vuelosPorMes[mes].count(dia)) {
             cout << "\n--- Vuelos para el " << dia << "/" << mes << " ---\n";
             for (Vuelo* v : vuelosPorMes[mes][dia]) {
-                cout << "\n|============ CODIGO DE VUELO: " << v->getCodigoVuelo() << " ============|\n";
                 v->mostrarVuelo();
-                cout << "|======================================================|\n";
             }
         }
         else {
@@ -93,9 +91,7 @@ public:
                 if (vuelosPorMes[mes].count(dia)) {
                     cout << "\n--- Vuelos del Dia " << dia << " ---\n";
                     for (Vuelo* v : vuelosPorMes[mes][dia]) {
-                        cout << "\n|============= CODIGO DE VUELO : " << v->getCodigoVuelo() << " =============|\n";
                         v->mostrarVuelo();
-                        cout << "|======================================================|\n";
                     }
                 }
             }
@@ -106,7 +102,7 @@ public:
     }
 
     void mostrarVuelosPorPaises(string origen, string destino) {
-        cout << "\n=== Vuelos segun Origen -> Destino ===\n";
+        cout << "\n=== Vuelos segun " << origen << "a " << destino << " ==== \n";
         bool vuelosEncontrados = false;
 
         for (auto itMes = vuelosPorMes.begin(); itMes != vuelosPorMes.end(); ++itMes) {
@@ -120,9 +116,7 @@ public:
                 for (Vuelo* vuelo : listaVuelos) {
                     if (vuelo->getOrigen() == origen && vuelo->getDestino() == destino) {
                         cout << "\n--- Vuelos del " << dia << " de " << meses[mes - 1] << " ---\n";
-                        cout << "\n|============ CODIGO DE VUELO: " << vuelo->getCodigoVuelo() << " ============|\n";
                         vuelo->mostrarVuelo();
-                        cout << "|======================================================|\n";
                         vuelosEncontrados = true;
                     }
                 }
@@ -144,9 +138,7 @@ public:
             for (Vuelo* vuelo : listaVuelos) {
                 if (vuelo->getOrigen() == origen && vuelo->getDestino() == destino) {
                     cout << "\n--- Vuelo del " << diaIda << " de " << meses[mesIda - 1] << " ---\n";
-                    cout << "\n|============ CODIGO DE VUELO: " << vuelo->getCodigoVuelo() << " ============|\n";
                     vuelo->mostrarVuelo();
-                    cout << "|======================================================|\n";
                     vuelosEncontrados = true;
                 }
             }
@@ -169,9 +161,7 @@ public:
             for (Vuelo* vuelo : listaVuelos) {
                 if (vuelo->getOrigen() == origen && vuelo->getDestino() == destino) {
                     cout << "\n--- Vuelo del " << diaVuelta << " de " << meses[mesVuelta - 1] << " ---\n";
-                    cout << "\n|============ CODIGO DE VUELO: " << vuelo->getCodigoVuelo() << " ============|\n";
                     vuelo->mostrarVuelo();
-                    cout << "|======================================================|\n";
                     vuelosEncontrados = true;
                 }
             }
@@ -194,9 +184,7 @@ public:
                 vector<Vuelo*>& listaVuelos = itDia->second;
 
                 for (Vuelo* vuelo : listaVuelos) {
-                    cout << "\n|============ CODIGO DE VUELO: " << vuelo->getCodigoVuelo() << " ============|\n";
                     vuelo->mostrarVuelo();
-                    cout << "|======================================================|\n";
                 }
             }
         }

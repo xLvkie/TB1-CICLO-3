@@ -39,8 +39,8 @@ public:
     ~Vuelo() {}
 
     void mostrarVuelo() {
-        cout << "Vuelo de " << origen << " a " << destino << " - Ida: " << diaIda << "/" << mesIda
-            << " - Vuelta: " << diaVuelta << "/" << mesVuelta << endl;
+        cout << "Vuelo nro: " << codigoVuelo << " |  " << origen << " - " << destino << endl;
+        cout << "Ida: " << diaIda << "/" << mesIda << "\nVuelta: " << diaVuelta << "/" << mesVuelta << endl << endl;
     }
 
     string getOrigen() { return origen; }
