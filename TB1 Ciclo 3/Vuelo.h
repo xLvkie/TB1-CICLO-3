@@ -22,6 +22,8 @@ private:
     vector<Asiento*> asientos;
 
 public:
+    Vuelo() {}
+
     Vuelo(string origen, string destino, int diaIda, int mesIda, int diaVuelta, int mesVuelta, int codigoVuelo)
         : origen(origen), destino(destino), diaIda(diaIda), mesIda(mesIda), diaVuelta(diaVuelta), mesVuelta(mesVuelta), codigoVuelo(codigoVuelo) {
 
@@ -51,6 +53,17 @@ public:
     int getMesVuelta() { return mesVuelta; }
     int getCodigoVuelo() { return codigoVuelo; }
     vector<Asiento*> getVectorAsientos() { return asientos; }
+
+    Asiento* getAsiento(int idAsiento) {
+        for (int i = 0; i < asientos.size(); i++)
+        {
+            if (asientos[i]->getIdAsiento() == idAsiento) {
+                return asientos[i];
+            }
+        }
+        cout << "\nAsiento no valido\n";
+        return nullptr;
+    }
 
     void mostrarAsientos() {
         for (int i = 0; i < asientos.size(); i++)
