@@ -11,14 +11,15 @@ using namespace std;
 
 class Pasajero {
 private:
-	string nombres;
-	string apellidos;
-	string correo;
-	int dni;
+    string nombres;
+    string apellidos;
+    string correo;
+    int dni;
 public:
-	Pasajero(string nombres, string apellidos, string correo, int dni)
-		: nombres(nombres), apellidos(apellidos), correo(correo), dni(dni) {}
-	~Pasajero() {}
+    Pasajero(string nombres, string apellidos, string correo, int dni)
+        : nombres(nombres), apellidos(apellidos), correo(correo), dni(dni) {
+    }
+    ~Pasajero() {}
 
     string getNombres() { return nombres; }
     string getApellidos() { return apellidos; }
@@ -65,5 +66,4 @@ Pasajero* pedirDatosPasajero() {
 
     return new Pasajero(nombres, apellidos, correo, stoi(dniStr));
 }
-
 #endif // !__PASAJERO__

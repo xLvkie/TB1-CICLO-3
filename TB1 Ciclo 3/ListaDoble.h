@@ -19,8 +19,8 @@ public:
 	~Lista();
 	void insertarInicio(T v);
 	void insertarFinal(T v);
-    bool esVacio();
-	void mostrar();
+	bool esVacio();
+	void mostrarPasajero();
 };
 
 // ---
@@ -32,7 +32,7 @@ Lista<T>::~Lista() {
 		inicio = inicio->siguiente;
 		delete temp;
 		temp = nullptr;
-	}	
+	}
 	inicio = nullptr;
 }
 
@@ -76,7 +76,7 @@ bool Lista<T>::esVacio() {
 // --- Registro Pasajeros ---
 
 template<class T>
-void Lista<T>::mostrar() {
+void Lista<T>::mostrarPasajero() {
 	Nodo<T>* nodo = inicio; //Nodo<tipo T> apunta (*) hacua 'nodo'
 	cout << "# Lista de Pasajeros:\n";
 
@@ -94,4 +94,3 @@ void Lista<T>::mostrar() {
 }
 
 #endif // !__LISTA_DOBLE__
-

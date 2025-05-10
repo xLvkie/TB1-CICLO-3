@@ -114,13 +114,17 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Asientos.h" />
-    <ClInclude Include="GestorVuelos.h" />
+    <ClInclude Include="Asiento.h" />
+    <ClInclude Include="Gestortxt.h" />
+    <ClInclude Include="GestorVuelo.h" />
     <ClInclude Include="ListaDoble.h" />
     <ClInclude Include="Nodo.h" />
     <ClInclude Include="Pasajero.h" />
     <ClInclude Include="Sistema.h" />
     <ClInclude Include="Vuelo.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ArchivoPrueba.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
