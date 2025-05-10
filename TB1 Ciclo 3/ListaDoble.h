@@ -39,7 +39,7 @@ Lista<T>::~Lista() {
 // ---
 template<class T>
 void Lista<T>::insertarInicio(T v) {
-	Nodo<T>* nodo = new Nodo<T>(v);
+	Nodo<T>* nodo = new Nodo<T>(v, nullptr, nullptr);
 
 	if (esVacio()) inicio = nodo;
 	else {

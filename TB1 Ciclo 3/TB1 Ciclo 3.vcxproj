@@ -121,6 +121,7 @@
     <ClInclude Include="ListaDoble.h" />
     <ClInclude Include="Nodo.h" />
     <ClInclude Include="Pasajero.h" />
+    <ClInclude Include="Pila.h" />
     <ClInclude Include="Reserva.h" />
     <ClInclude Include="Sistema.h" />
     <ClInclude Include="Vuelo.h" />

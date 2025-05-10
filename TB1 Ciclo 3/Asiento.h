@@ -21,6 +21,14 @@ public:
 		cout << idAsiento << " - " << clasificacion << " [" << estado << "]\n";
 	}
 
+	void setEstado(bool a) {
+		estado = a;
+	}
+
+	void mostrarAsientoDisponible() {
+		if (estado == false)mostrarAsiento();
+	}
+
 	char getClasificacion() {
 		return clasificacion;
 	}
