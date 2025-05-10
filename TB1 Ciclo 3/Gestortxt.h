@@ -42,13 +42,17 @@ public:
         return lines;
     }
 
+    int size() {
+        return lines.size();
+    }
+
 	//Agregar elemento al final
 	void agregar(T elem) {
 		lines.push_back(elem);
 		guardar();
 	}
 
-    T mostrarLinea(int i) {
+    T getLine(int i) {
         if(i >= 0 && i < lines.size())
         return lines[i];
         return NULL;

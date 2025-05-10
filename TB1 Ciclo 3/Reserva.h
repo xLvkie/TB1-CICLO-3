@@ -13,14 +13,17 @@ private:
 public:
 	Reserva(){}
 	Reserva(Vuelo *vuelo, Asiento *asiento) {
+		asiento->setEstado(1);
+
 		this->vuelo = vuelo;
 		this->asiento = asiento;
 	}
 	~Reserva(){}
 
 	void mostrar() {
+		cout << "Vuelo: \n";
 		vuelo->mostrarVuelo();
-		cout << endl;
+		cout << "Asiento: ";
 		asiento->mostrarAsiento();
 	}
 

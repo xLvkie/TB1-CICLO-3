@@ -2,21 +2,19 @@
 #include "ListaDoble.h"
 #include "GestorVuelo.h"
 #include "GestorReserva.h"
+#include "GestorUsuarios.h"
 
 int main() {
     srand(time(NULL));
     portada(); system("pause>0");
+
+    GestorUsuarios gUsuario;
 
     Lista<Pasajero*> pLista;
 
     GestorVuelo gVuelos;
     gVuelos.generarVuelosAutomaticos();
     GestorReserva gReservas(gVuelos);
-
-    //prueba para mostrar pasajeros wazaaa
-    pLista.insertarInicio(new Pasajero("buki", "buki2", "hola@gmail.com", 75202855));
-    pLista.insertarInicio(new Pasajero("buki2", "buki3", "hola2@gmail.com", 65202855));
-    pLista.insertarInicio(new Pasajero("buki4", "buki5", "hola3@gmail.com", 55202855));
 
     int opcion = 0;
     string destino, origen;
@@ -39,17 +37,20 @@ int main() {
                 case 1:
                     // -- Registro de pasajero --
                     system("cls"); tituloUsuario();
+
+                    gUsuario.agregarUsuario();
+
                     nuevo = pedirDatosPasajero();
                     pLista.insertarInicio(nuevo);
 
-                    // -- Conclusi髇 --
+                    // -- Conclusi贸n --
                     cout << "Pasajero registrado correctamente\n";
                     system("pause"); break;
                 case 2:
                     // -- Mostrar Pasajeros ---
                     system("cls"); tituloUsuario();
-                    pLista.mostrarPasajero();
-                    // -- Conclusi髇 --
+                    gUsuario.mostrar();
+                    // -- Conclusi贸n --
                     system("pause"); break;
                 case 3: system("pause"); break;
                 default: cout << "Opcion no valida\n"; system("pause"); break;
@@ -69,7 +70,7 @@ int main() {
                     // -- Mostrar Todos los Vuelos --
                     system("cls"); tituloVuelo();
                     gVuelos.mostrarTodosLosVuelos();
-                    // -- Conclusi髇 --
+                    // -- Conclusi贸n --
                     system("pause"); break;
                 case 2:
                     // -- Validar Datos --
@@ -87,7 +88,7 @@ int main() {
                     // -- Mostrar Vuelos por Mes --
                     system("cls"); tituloVuelo();
                     gVuelos.mostrarVuelosPorMes(auxValor);
-                    // -- Conclusi髇 --
+                    // -- Conclusi贸n --
                     system("pause"); break;
                 case 3:
                     // -- Validar Datos --
@@ -108,7 +109,7 @@ int main() {
 
                     // -- Mostrar Vuelos por Paises --
                     gVuelos.mostrarVuelosPorPaises(origen, destino);
-                    // -- Conclusi髇 --
+                    // -- Conclusi贸n --
                     system("pause"); break;
                 case 4:
                     int auxDia, auxMes;
@@ -159,7 +160,7 @@ int main() {
                     //gVuelos.prueba();
                     gReservas.reservar();
                     break;
-                default: cout << "Opci髇 no v醠ida\n"; system("pause"); break;
+                default: cout << "Opci贸n no v谩lida\n"; system("pause"); break;
 
                 }
             } while (auxVuelo != 6);
@@ -182,7 +183,7 @@ int main() {
             break;
 
         case 4: cout << "Gracias por usar el sistema\n"; system("pause"); break;
-        default: cout << "Opci髇 inv醠ida\n"; system("pause"); break;
+        default: cout << "Opci贸n inv谩lida\n"; system("pause"); break;
         }
 
         } while (opcion != 4);
