@@ -25,6 +25,10 @@ public:
 
 		cout << "Seleccione asiento: ";
 		vAux->mostrarAsientosDisponibles();
+
+		cout << "Seleccione asiento: \n";
+		vAux->mostrarAsientos();
+
 		cin >> aux;
 
 		Asiento* aAux = vAux->getAsiento(aux);
