@@ -13,8 +13,8 @@ public:
 	Nodo<T>* siguiente;
 
 	Nodo(T v, Nodo<T>* ant = nullptr, Nodo<T>* sig = nullptr)
-		: dato(v), anterior(ant), siguiente(sig) {}
+		: dato(v), anterior(ant), siguiente(sig) {
+	}
 };
 
 #endif // !__NODO__
-

@@ -5,6 +5,8 @@
 
 using namespace std;
 
+// --- Menu Principal --- ///
+
 void portada() {
 	cout << "\n\n\n\n\n";
 	cout << " \t ____  _                           _     _                      _      _    _____                      _ " << endl;
@@ -32,6 +34,8 @@ void menuPrincipal() {
 	cout << "4. Salir\n";
 }
 
+// --- Menu Usuario --- ///
+
 void menuUsuario() {
 	cout << "=====| Menu de Usuario |=====\n";
 	cout << "1. Registrar nuevo usuario\n";
@@ -39,16 +43,39 @@ void menuUsuario() {
 	cout << "3. Salir\n";
 }
 
-void menuVuelos() {
-	cout << "=====|  Menu de Vuelos  |=====\n";
-	cout << "1. Registrar nuevo vuelo\n";
-	cout << "2. Registro de vuelos\n";
-	cout << "3. Salir\n";
-}
-
 void tituloUsuario() {
 	cout << "=====| Menu de Usuario |=====\n";
 }
 
-#endif // !__SISTEMA__
+// --- Menu Vuelos --- ///
 
+void menuVuelos() {
+	cout << "=====|  Menu de Vuelos  |=====\n";
+	cout << "1. Listar todos los vuelos\n";
+	cout << "2. Listar vuelos por mes\n";
+	cout << "3. Listar vuelos por pais\n";
+	cout << "4. Buscar vuelo manualmente\n";
+	cout << "5. Salir\n";
+}
+
+void tituloVuelo() {
+	cout << "=====|  Menu de Vuelos  |=====\n";
+}
+
+void selecionMesVuelo() {
+	cout << "Listado de vuelos\n";
+	cout << "1. Enero\t 2. Febrero\t 3. Marzo\n";
+	cout << "4. Abril\t 5. Mayo\t 6. Junio\n";
+	cout << "7. Julio\t 8. Agosto\t 9. Septiembre\n";
+	cout << "10. Octubre\t 11. Noviembre\t 12. Diciembre\n";
+}
+
+void seleccionPais() {
+	cout << "Listado de paises\n";
+	cout << "1. Peru\t 2. Chile\t 3. Argentina\n";
+	cout << "4. Brasil\t 5. Colombia\t 6. Ecuador\n";
+	cout << "7. Mexico\t 8. EE.UU\t 9. Espania\n";
+	cout << "10. Italia\n";
+}
+
+#endif // !__SISTEMA__

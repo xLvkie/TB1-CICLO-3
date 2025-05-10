@@ -3,24 +3,42 @@
 
 #include <map>
 #include <vector>
-#include "Asientos.h"
+#include <istream>
+#include <algorithm>
+#include "Asiento.h"
 
 using namespace std;
+
+// --- Variables Universales ---
+
+string paises[10] = { "Peru", "Chile", "Argentina", "Brasil", "Colombia", "Ecuador", "Mexico", "EE.UU", "Espania", "Italia" };
 
 // --- Clase Vuelo --- 
 
 class Vuelo {
 private:
-	string origen, destino;
-	int diaIda, mesIda, diaVuelta, mesVuelta;
-    Asientos asientos;
+    string origen, destino;
+    int diaIda, mesIda, diaVuelta, mesVuelta, codigoVuelo;
+    vector<Asiento*> asientos;
 
 public:
-	Vuelo(string origen, string destino, int diaIda, int mesIda, int diaVuelta, int mesVuelta)
-		: origen(origen), destino(destino), diaIda(diaIda), mesIda(mesIda), diaVuelta(diaVuelta), mesVuelta(mesVuelta) {}
-	~Vuelo() {}
+    Vuelo(string origen, string destino, int diaIda, int mesIda, int diaVuelta, int mesVuelta, int codigoVuelo)
+        : origen(origen), destino(destino), diaIda(diaIda), mesIda(mesIda), diaVuelta(diaVuelta), mesVuelta(mesVuelta), codigoVuelo(codigoVuelo) {
 
-    void mostrarTodosLosVuelos() {
+        //Para asignar 20 asientos por cada Vuelo
+        for (int i = 0; i < 20; i++)
+        {
+            //Creamos un asiento
+            char clasificacion = (rand() % 2 ? 'V' : 'E'); // Vip o Economico
+            bool estado = rand() % 2; // 1 lleno, 0 vacio 
+            int idAsiento = i + 101; // ids unicos del 101 al 120
+
+            asientos.push_back(new Asiento(clasificacion, estado, idAsiento));
+        }
+    }
+    ~Vuelo() {}
+
+    void mostrarVuelo() {
         cout << "Vuelo de " << origen << " a " << destino << " - Ida: " << diaIda << "/" << mesIda
             << " - Vuelta: " << diaVuelta << "/" << mesVuelta << endl;
     }
@@ -31,13 +49,43 @@ public:
     int getMesIda() { return mesIda; }
     int getDiaVuelta() { return diaVuelta; }
     int getMesVuelta() { return mesVuelta; }
+    int getCodigoVuelo() { return codigoVuelo; }
+    vector<Asiento*> getVectorAsientos() { return asientos; }
+
+    void mostrarAsientos() {
+        for (int i = 0; i < asientos.size(); i++)
+        {
+            asientos[i]->mostrarAsiento();
+
+        }
+    }
+    void ordenarAsientosPorClasificacion() {
+        for (int i = 0; i < asientos.size() - 1; i++)
+        {
+            for (int j = 0; j < asientos.size() - 1 - i; j++)
+            {
+                if (asientos[j]->getClasificacion() < asientos[j + 1]->getClasificacion()) {
+                    swap(asientos[j], asientos[j + 1]);
+                }
+            }
+        }
+    }
+
+    void ordenarAsientosPorEstado() {
+        for (int i = 0; i < asientos.size() - 1; i++)
+        {
+            for (int j = 0; j < asientos.size() - 1 - i; j++)
+            {
+                if (asientos[j]->isEstado() < asientos[j + 1]->isEstado()) {
+                    swap(asientos[j], asientos[j + 1]);
+                }
+            }
+        }
+    }
 };
 
-// --- Variables Universales ---
-
-string paises[] = { "Peru", "Chile", "Argentina", "Brasil", "Colombia", "Ecuador", "Mexico", "EE.UU", "Espania", "Italia" };
-
 // --- Funciones externas ---
+
 
 Vuelo* pedirDatosVuelo() {
     int opcionOrigen, opcionDestino;
@@ -90,13 +138,13 @@ Vuelo* pedirDatosVuelo() {
             cout << "Mes inválido.\n";
     } while (mesVuelta < 1 || mesVuelta > 12);
 
+
     cin.ignore();
 
     string origen = paises[opcionOrigen - 1];
     string destino = paises[opcionDestino - 1];
 
-    return new Vuelo(origen, destino, diaIda, mesIda, diaVuelta, mesVuelta);
+    return new Vuelo(origen, destino, diaIda, mesIda, diaVuelta, mesVuelta, 1);
 }
 
 #endif // !__VUELO__
-

@@ -35,11 +35,17 @@
     <ClInclude Include="ListaDoble.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Asientos.h">
+    <ClInclude Include="Asiento.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="GestorVuelos.h">
+    <ClInclude Include="GestorVuelo.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="Gestortxt.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ArchivoPrueba.txt" />
   </ItemGroup>
 </Project>
