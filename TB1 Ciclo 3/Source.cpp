@@ -111,10 +111,10 @@ int main() {
                 case 4:
                     gVuelos.prueba();
                     system("pause"); break;
-                case 5: system("pause"); break;
+                case 5:  break;
                 default: cout << "Opción no válida\n"; system("pause"); break;
                 }
-            } while (auxVuelo != 3);
+            } while (auxVuelo != 5);
             break;
         case 3: system("cls"); cout << "En trabajo\n"; system("pause"); break;
         case 4: cout << "Gracias por usar el sistema\n"; system("pause"); break;
