@@ -22,7 +22,7 @@ public:
 
 		Vuelo* vAux = new Vuelo(*this->Gvuelo.getVuelo(aux));
 
-		cout << "Seleccione asiento: ";
+		cout << "Seleccione asiento: \n";
 		vAux->mostrarAsientos();
 		cin >> aux;
 
