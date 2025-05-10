@@ -55,7 +55,8 @@ void menuVuelos() {
 	cout << "2. Listar vuelos por mes\n";
 	cout << "3. Listar vuelos por pais\n";
 	cout << "4. Buscar vuelo manualmente\n";
-	cout << "5. Salir\n";
+	cout << "5. Reservar Vuelo\n";
+	cout << "6. Salir\n";
 }
 
 void tituloVuelo() {
@@ -76,6 +77,12 @@ void seleccionPais() {
 	cout << "4. Brasil\t 5. Colombia\t 6. Ecuador\n";
 	cout << "7. Mexico\t 8. EE.UU\t 9. Espania\n";
 	cout << "10. Italia\n";
+}
+
+void menuCheckin() {
+	cout << "=====| Menu de Check in |=====\n";
+	cout << "1. Ver mis reservas\n";
+	cout << "2. Salir\n";
 }
 
 #endif // !__SISTEMA__
