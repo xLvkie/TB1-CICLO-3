@@ -117,6 +117,7 @@
     <ClInclude Include="Asiento.h" />
     <ClInclude Include="GestorReserva.h" />
     <ClInclude Include="Gestortxt.h" />
+    <ClInclude Include="GestorUsuarios.h" />
     <ClInclude Include="GestorVuelo.h" />
     <ClInclude Include="ListaDoble.h" />
     <ClInclude Include="Nodo.h" />
@@ -127,7 +128,7 @@
     <ClInclude Include="Vuelo.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ArchivoPrueba.txt" />
+    <Text Include="Usuarios.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
