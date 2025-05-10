@@ -102,7 +102,7 @@ public:
     }
 
     void mostrarVuelosPorPaises(string origen, string destino) {
-        cout << "\n=== Vuelos segun " << origen << "a " << destino << " ==== \n";
+        cout << "\n=== Vuelos de " << origen << " a " << destino << " ==== \n";
         bool vuelosEncontrados = false;
 
         for (auto itMes = vuelosPorMes.begin(); itMes != vuelosPorMes.end(); ++itMes) {
