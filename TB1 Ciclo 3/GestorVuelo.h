@@ -59,7 +59,7 @@ public:
                 string codigoVuelo;
                 do {
                     codigoVuelo = "";
-                    for (int j = 0; j < 8; j++) {
+                    for (int j = 0; j < 5; j++) {
                         codigoVuelo += '0' + rand() % 10;
                     }
                 } while (codigosGenerados.count(codigoVuelo) > 0);
@@ -129,7 +129,7 @@ public:
     }
 
     void mostrarVuelosDatosIda(string origen, string destino, int mesIda, int diaIda) {
-        cout << "\n=== Vuelos segun Origen -> Destino ===\n";
+        cout << "\n=== Vuelos segun Origen - Destino - Fecha de Ida ===\n";
         bool vuelosEncontrados = false;
 
         if (vuelosPorMes.count(mesIda) && vuelosPorMes[mesIda].count(diaIda)) {
@@ -150,28 +150,8 @@ public:
         }
     }
 
-    void mostrarVuelosDatosVuelta(string origen, string destino, int mesVuelta, int diaVuelta) {
-        cout << "\n=== Vuelos segun Destino -> Origen ===\n";
-        bool vuelosEncontrados = false;
-
-
-        if (vuelosPorMes.count(mesVuelta) && vuelosPorMes[mesVuelta].count(diaVuelta)) {
-            vector<Vuelo*>& listaVuelos = vuelosPorMes[mesVuelta][diaVuelta];
-
-            for (Vuelo* vuelo : listaVuelos) {
-                if (vuelo->getOrigen() == origen && vuelo->getDestino() == destino) {
-                    cout << "\n--- Vuelo del " << diaVuelta << " de " << meses[mesVuelta - 1] << " ---\n";
-                    vuelo->mostrarVuelo();
-                    vuelosEncontrados = true;
-                }
-            }
-        }
-
-        if (!vuelosEncontrados) {
-            cout << "No se encontraron vuelos de " << destino << " a " << origen
-                << " para el " << diaVuelta << " de " << meses[mesVuelta - 1] << ".\n";
-        }
-    }
+    //Borre void mostrarVuelosDatosVuelta(string origen, string destino, int mesVuelta, int diaVuelta) { 
+    // Porque el map busca valores con el indice de dia ida y mes ida, no diaVuelta y mes vuelta
 
     void mostrarTodosLosVuelos() {
         cout << "\n=== Todos los vuelos registrados ===\n";
@@ -190,6 +170,31 @@ public:
         }
     }
 
+    Vuelo* getVueloPorCodigo(int codigo) {
+        for (auto itMes = vuelosPorMes.begin(); itMes != vuelosPorMes.end(); ++itMes) {
+            int mes = itMes->first;
+            map<int, vector<Vuelo*>>& dias = itMes->second;
+
+            for (auto itDia = dias.begin(); itDia != dias.end(); ++itDia) {
+                int dia = itDia->first;
+                vector<Vuelo*>& listaVuelos = itDia->second;
+
+                for (Vuelo* vuelo : listaVuelos) {
+                    if (vuelo->getCodigoVuelo() == codigo) {
+                        return vuelo;
+                    }
+                }
+            }
+        }
+        cout << "\nNo se encontro el vuelo con el codigo: " << codigo << endl;
+        return nullptr; 
+    }
+
+    void mostrarUnVuelo(Vuelo* v) {
+        v->mostrarVuelo(); 
+    }
+
+
     //Asientos
     void mostrarAsientosVuelo(Vuelo* v) {
         v->mostrarAsientos();
@@ -202,6 +207,8 @@ public:
         //prueba->ordenarAsientosPorEstado(); 
         prueba->mostrarAsientos();
     }
+
+    
 
 };
 
