@@ -72,6 +72,14 @@ public:
 
         }
     }
+
+    void mostrarAsientosDisponibles() {
+        for (int i = 0; i < asientos.size(); i++)
+        {
+            asientos[i]->mostrarAsientoDisponible();
+
+        }
+    }
     void ordenarAsientosPorClasificacion() {
         for (int i = 0; i < asientos.size() - 1; i++)
         {

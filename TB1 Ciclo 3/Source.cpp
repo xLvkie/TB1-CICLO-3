@@ -3,21 +3,15 @@
 #include "ListaDoble.h"
 #include "GestorVuelo.h"
 #include "GestorReserva.h"
+#include "GestorUsuarios.h"
 
 int main() {
     srand(time(NULL));
 
-    Lista<Pasajero*> pLista;
-    /*Lista<GestorVuelos*> gLista;*/
-
+    GestorUsuarios gUsuario;
     GestorVuelo gVuelos;
     gVuelos.generarVuelosAutomaticos();
     GestorReserva gReservas(gVuelos);
-
-    //prueba para mostrar pasajeros wazaaa
-    pLista.insertarInicio(new Pasajero("buki", "buki2", "hola@gmail.com", 75202855));
-    pLista.insertarInicio(new Pasajero("buki2", "buki3", "hola2@gmail.com", 65202855));
-    pLista.insertarInicio(new Pasajero("buki4", "buki5", "hola3@gmail.com", 55202855));
 
     int opcion = 0;
     string destino, origen;
@@ -41,15 +35,14 @@ int main() {
                 case 1:
                     // -- Registro de pasajero --
                     system("cls"); tituloUsuario();
-                    nuevo = pedirDatosPasajero();
-                    pLista.insertarInicio(nuevo);
+                    gUsuario.agregarUsuario();
                     // -- Conclusión --
                     cout << "Pasajero registrado correctamente\n";
                     system("pause"); break;
                 case 2:
                     // -- Mostrar Pasajeros ---
                     system("cls"); tituloUsuario();
-                    pLista.mostrarPasajero();
+                    gUsuario.mostrar();
                     // -- Conclusión --
                     system("pause"); break;
                 case 3: system("pause"); break;

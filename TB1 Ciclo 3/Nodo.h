@@ -15,6 +15,11 @@ public:
 	Nodo(T v, Nodo<T>* ant = nullptr, Nodo<T>* sig = nullptr)
 		: dato(v), anterior(ant), siguiente(sig) {
 	}
+
+	Nodo(T d, Nodo<T>* sig = nullptr) {
+		dato = d;
+		siguiente = sig;
+	}
 };
 
 #endif // !__NODO__
