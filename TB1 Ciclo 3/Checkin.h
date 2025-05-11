@@ -40,6 +40,7 @@ public:
 
         if (!reservaEncontrada) {
             cout << "No se encontró una reserva con el DNI y el código de vuelo proporcionados." << endl;
+     
         }
     }
 };

@@ -50,6 +50,9 @@ public:
                 int mesVuelta;
 
                 do {
+                    if (mesIda == 12 && diaIda == diaVuelta) {
+                        diaVuelta = (diaIda % 30) + 1; // fuerza a que sean distintos
+                    }
                     mesVuelta = mesIda + rand() % (13 - mesIda);
                 } while (diaIda == diaVuelta && mesVuelta == mesIda);
 
