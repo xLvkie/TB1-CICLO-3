@@ -151,21 +151,32 @@ public:
         }
     }
 
+    //Borre void mostrarVuelosDatosVuelta(string origen, string destino, int mesVuelta, int diaVuelta) { 
+    // Porque el map busca valores con el indice de dia ida y mes ida, no diaVuelta y mes vuelta
+
+    void mostrarVuelosDelDia(vector<Vuelo*>& vuelos, size_t i = 0) {
+        if (i >= vuelos.size()) return;
+        vuelos[i]->mostrarVuelo();
+        mostrarVuelosDelDia(vuelos, i + 1);
+    }
+
+    void mostrarVuelosDelMes(map<int, vector<Vuelo*>>& dias, map<int, vector<Vuelo*>>::iterator itDia) {
+        if (itDia == dias.end()) return;
+        mostrarVuelosDelDia(itDia->second);
+        mostrarVuelosDelMes(dias, next(itDia));
+    }
+
+    // iterador es lo mismo que auto, pero como lo estamos definiedo en los argumentos no puede ir auto debe ir iterador
+
+    void mostrarTodosLosVuelosRec(map<int, map<int, vector<Vuelo*>>>& vuelosPorMes, map<int, map<int, vector<Vuelo*>>>::iterator itMes) {
+        if (itMes == vuelosPorMes.end()) return;
+        mostrarVuelosDelMes(itMes->second, itMes->second.begin());
+        mostrarTodosLosVuelosRec(vuelosPorMes, next(itMes));
+    }
+
     void mostrarTodosLosVuelos() {
         cout << "\n=== Todos los vuelos registrados ===\n";
-        for (auto itMes = vuelosPorMes.begin(); itMes != vuelosPorMes.end(); ++itMes) {
-            int mes = itMes->first;
-            map<int, vector<Vuelo*>>& dias = itMes->second;
-
-            for (auto itDia = dias.begin(); itDia != dias.end(); ++itDia) {
-                int dia = itDia->first;
-                vector<Vuelo*>& listaVuelos = itDia->second;
-
-                for (Vuelo* vuelo : listaVuelos) {
-                    vuelo->mostrarVuelo();
-                }
-            }
-        }
+        mostrarTodosLosVuelosRec(vuelosPorMes, vuelosPorMes.begin());
     }
 
     void ordenarVuelosPorPrecio() {

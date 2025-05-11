@@ -72,6 +72,7 @@ public:
     void mostrar(){
         pLista.mostrarPasajero();
     }
+
 };
 
 #endif // !_GESTORUSUARIOS_

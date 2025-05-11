@@ -2,6 +2,7 @@
 #define _GRESERVA_
 
 #include "Pila.h"
+#include "GestorUsuarios.h"
 #include "Reserva.h"
 #include "Gestortxt.h"
 #include "GestorUsuarios.h"
@@ -98,6 +99,10 @@ public:
 		while (!aux.estaVacia()) {
 			reservas.push(aux.pop());
 		}
+	}
+
+	Pila<Reserva> getReservas() {
+		return reservas;
 	}
 };
 
