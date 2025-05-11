@@ -151,9 +151,6 @@ public:
         }
     }
 
-    //Borre void mostrarVuelosDatosVuelta(string origen, string destino, int mesVuelta, int diaVuelta) { 
-    // Porque el map busca valores con el indice de dia ida y mes ida, no diaVuelta y mes vuelta
-
     void mostrarTodosLosVuelos() {
         cout << "\n=== Todos los vuelos registrados ===\n";
         for (auto itMes = vuelosPorMes.begin(); itMes != vuelosPorMes.end(); ++itMes) {
@@ -195,7 +192,6 @@ public:
         v->mostrarVuelo(); 
     }
 
-    //prueba
     Vuelo* getVuelo(int codeVuelo) {
         for (auto itMes = vuelosPorMes.begin(); itMes != vuelosPorMes.end(); ++itMes) {
             int mes = itMes->first;
@@ -215,19 +211,6 @@ public:
         }
         cout << "\nNo se encontro el vuelo con el codigo: " << codeVuelo;
         return nullptr;
-    }
-
-    //Asientos
-    void mostrarAsientosVuelo(Vuelo* v) {
-        v->mostrarAsientos();
-    }
-
-    void prueba() {
-        Vuelo* prueba = new Vuelo("Peru", "Chile", 1, 5, 30, 6, 500);
-
-        //prueba->ordenarAsientosPorClasificacion(); 
-        //prueba->ordenarAsientosPorEstado(); 
-        prueba->mostrarAsientos();
     }
 
     bool isVuelosEncontrados() {

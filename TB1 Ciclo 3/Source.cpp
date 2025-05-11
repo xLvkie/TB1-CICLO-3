@@ -171,10 +171,6 @@ int main() {
                     system("pause"); break;
                 case 6:
                     system("pause"); break;
-                case 10://pruebasss
-                    //gVuelos.prueba();
-                    gReservas.reservar();
-                    break;
                 default: cout << "Opción no válida\n"; system("pause"); break;
 
                 }

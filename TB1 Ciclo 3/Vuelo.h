@@ -18,7 +18,7 @@ string paises[10] = { "Peru", "Chile", "Argentina", "Brasil", "Colombia", "Ecuad
 class Vuelo {
 private:
     string origen, destino;
-    int diaIda, mesIda, diaVuelta, mesVuelta, codigoVuelo;
+    int diaIda, mesIda, diaVuelta, mesVuelta, codigoVuelo, precio;
     vector<Asiento*> asientos;
 
 public:
@@ -37,12 +37,16 @@ public:
 
             asientos.push_back(new Asiento(clasificacion, estado, idAsiento));
         }
+
+        //Asignar precios aleatorios
+        precio = (250 + rand() % (1000 + 1 - 250)) * 2; // pq es ida y vuelta
     }
     ~Vuelo() {}
 
     void mostrarVuelo() {
         cout << "Vuelo nro: " << codigoVuelo << " |  " << origen << " - " << destino << endl;
-        cout << "Ida: " << diaIda << "/" << mesIda << "\nVuelta: " << diaVuelta << "/" << mesVuelta << endl << endl;
+        cout << "Ida: " << diaIda << "/" << mesIda << "\nVuelta: " << diaVuelta << "/" << mesVuelta << 
+            "\nPrecio en USD:" << precio << endl << endl;
     }
 
     string getOrigen() { return origen; }
@@ -52,6 +56,7 @@ public:
     int getDiaVuelta() { return diaVuelta; }
     int getMesVuelta() { return mesVuelta; }
     int getCodigoVuelo() { return codigoVuelo; }
+    int getPrecio() { return precio; }
     vector<Asiento*> getVectorAsientos() { return asientos; }
 
     Asiento* getAsiento(int idAsiento) {
