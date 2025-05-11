@@ -6,15 +6,15 @@
 class CheckIn {
 private:
 	Reserva* reserva;
+	Pasajero* psj;
 
 public:
 	CheckIn(){}
-	CheckIn(Reserva* reserva) : reserva(reserva) {}
 	~CheckIn(){}
 
-	Reserva* procesarCheckIn(GestorReserva& gestorReserva) {
-		//deberia ser un booleano, si encuentra de que si es reserva que se muestre el checkin :v
+	// --- Valida datos y procesa un Checkin y lo usamos en el GestorCheckIn --- //
 
+	Reserva* procesarCheckIn(GestorReserva& gestorReserva) {
 		string dni;
 		int codigoVuelo;
 
@@ -36,19 +36,21 @@ public:
 				mostrarTarjeta();
 				reservaEncontrada = true;
 				return new Reserva(reserva);
-				break;
 			}
 		}
 
 		if (!reservaEncontrada) {
-			cout << "No se encontró una reserva con el DNI y el código de vuelo proporcionados." << endl;
+			cout << "No se encontro una reserva con el DNI y el codigo de vuelo proporcionados." << endl;
 			return nullptr;
 		}
 	}
 
+	// --- Función algo demás --- //
+
 	void mostrarTarjeta() {
 		cout << "|=============== TARJETA DE EMBARQUE ===============|\n";
-		reserva->mostrarDatosCompletos();
+		//PUEDE QUE HAYA UN ERROR ACA ....
+		reserva->mostrarDatosVuelo();
 		cout << "|===================================================|\n";
 	}
 };

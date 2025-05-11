@@ -19,7 +19,6 @@ public:
 
         if (reservaConfirmada != nullptr) {
             checkinsExitosos.enqueue(*reservaConfirmada); 
-            delete reservaConfirmada; //liberacion de memoria 
         }
     }
 
@@ -42,6 +41,43 @@ public:
         // restauramos la cola original
         while (!aux.esVacia()) {
             checkinsExitosos.enqueue(aux.dequeue());
+        }
+    }
+
+    // --- Muestra todos los CheckIns de un Pasajero --- //
+
+    void mostrarCheckinsPorUsuario() {
+        string dni;
+        cout << "Ingrese el DNI del usuario a consultar: ";
+        cin >> dni;
+
+        if (checkinsExitosos.esVacia()) {
+            cout << "\nNo hay check-ins registrados.\n";
+            return;
+        }
+
+        Cola<Reserva> aux;
+        bool hayCoincidencias = false;
+
+        cout << "\n=== CHECK-INS DEL USUARIO CON DNI: " << dni << " ===\n";
+        while (!checkinsExitosos.esVacia()) {
+            Reserva reserva = checkinsExitosos.dequeue();
+
+            if (reserva.getPasajero()->getDni() == dni) {
+                reserva.mostrarDatosCompletos();
+                hayCoincidencias = true;
+            }
+
+            aux.enqueue(reserva); // restaurar luego
+        }
+
+        // restauramos la cola original
+        while (!aux.esVacia()) {
+            checkinsExitosos.enqueue(aux.dequeue());
+        }
+
+        if (!hayCoincidencias) {
+            cout << "No se encontraron check-ins para el DNI proporcionado.\n";
         }
     }
 };

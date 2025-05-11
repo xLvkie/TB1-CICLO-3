@@ -9,7 +9,7 @@ int main() {
     srand(time(NULL));
     portada(); getch(); 
 
-    GestorUsuarios gUsuario;
+    GestorUsuarios gUsuario; gUsuario.leerUsuarios();
 
     GestorVuelo gVuelos;
     gVuelos.generarVuelosAutomaticos();
@@ -187,17 +187,18 @@ int main() {
                 system("cls"); menuCheckin(); cin >> opc;
                 switch (opc)
                 {
-                case 1: //validar checkin waza
-                   // gReservas.mostrarReservas();
-                    /*checkIn.procesarCheckIn(gReservas);*/
+                case 1: //ver checkin waza               
+                    gCheckIn.mostrarCheckinsPorUsuario();
+                    system("pause");
+                    break;
+                case 2: //validar checkin waza
                     gCheckIn.realizarCheckIn(gReservas);
-
                     system("pause");
                     break;
                 default:
                     break;
                 }
-            } while (opc != 2);
+            } while (opc != 3);
             break;
 
         case 4: cout << "Gracias por usar el sistema\n"; system("pause"); break;
