@@ -21,6 +21,8 @@ public:
 	void insertarFinal(T v);
 	bool esVacio();
 	void mostrarPasajero();
+
+	bool test(string nombres, string apellidos, string correo, string dni);
 };
 
 // ---
@@ -73,6 +75,7 @@ bool Lista<T>::esVacio() {
 	else return false;
 }
 
+// ---
 template<class T>
 void Lista<T>::mostrarPasajero() {
 	Nodo<T>* nodo = inicio; //Nodo<tipo T> apunta (*) hacua 'nodo'
@@ -89,6 +92,31 @@ void Lista<T>::mostrarPasajero() {
 		nodo = nodo->siguiente;
 	}
 	cout << endl;
+}
+
+// ---
+template<class T>
+bool Lista<T>::test(string nombres, string apellidos, string correo, string dni) {
+	Nodo<T>* nodo = inicio;
+
+	while (nodo != nullptr) {
+		Pasajero* psj = static_cast<Pasajero*>(nodo->dato);
+
+		if (psj->getDni() == dni) {
+			cout << "Ya existe un pasajero con ese DNI.\n";
+			return true;
+		}
+		if (psj->getCorreo() == correo) {
+			cout << "Ya existe un pasajero con ese correo.\n";
+			return true;
+		}
+		if (psj->getNombres() == nombres && psj->getApellidos() == apellidos) {
+			cout << "Ya existe un pasajero con ese nombre y apellido.\n";
+			return true;
+		}
+		nodo = nodo->siguiente;
+	}
+	return false;
 }
 
 #endif // !__LISTA_DOBLE__

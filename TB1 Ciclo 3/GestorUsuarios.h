@@ -25,7 +25,7 @@ public:
         }
     }
 
-    void agregarUsuario() {
+    Pasajero* agregarUsuario() {
         string nombres, apellidos, correo;
         string dniStr;
 
@@ -51,12 +51,22 @@ public:
                 cout << "DNI inválido.\n";
         } while (dniStr.length() != 8 || dniStr.find_first_not_of("0123456789") != string::npos);
 
+        //ACA VALIDAREMOS QUE ESOS DATOS NO SEA REPETIDOS!!!
+        if (pLista.test(nombres, apellidos, correo, dniStr)) {
+            cout << "[x] No se pudo registrar al pasajero por datos duplicados.\n";
+            return nullptr;
+        }
+
+        Pasajero* nuevoPasajero = new Pasajero(nombres, apellidos, correo, dniStr);
+
         archivo.agregar(nombres);
         archivo.agregar(apellidos);
         archivo.agregar(correo);
         archivo.agregar(dniStr);
 
         leerUsuarios();
+
+        return nuevoPasajero;
     }
 
     void mostrar(){

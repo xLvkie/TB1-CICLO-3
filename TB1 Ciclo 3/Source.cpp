@@ -38,7 +38,7 @@ int main() {
                     gUsuario.agregarUsuario();
 
                     // -- Conclusión --
-                    cout << "Pasajero registrado correctamente\n";
+                    cout << "Operación conluida correctamente\n";
                     system("pause"); break;
                 case 2:
                     // -- Mostrar Pasajeros ---
@@ -66,6 +66,7 @@ int main() {
                     gVuelos.mostrarTodosLosVuelos();
                     
                     gReservas.reservar(); 
+                    // -- Conclusión --
                     system("pause"); break;
                 case 2:
                     // -- Validar Datos --
@@ -170,6 +171,10 @@ int main() {
                     system("pause"); break;
                 case 6:
                     system("pause"); break;
+                case 10://pruebasss
+                    //gVuelos.prueba();
+                    gReservas.reservar();
+                    break;
                 default: cout << "Opción no válida\n"; system("pause"); break;
 
                 }

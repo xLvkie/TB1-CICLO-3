@@ -7,12 +7,12 @@
 class Reserva
 {
 private:
-	Vuelo *vuelo;
+	Vuelo* vuelo;
 	vector<Asiento*> asiento;
-	Pasajero user;
+	Pasajero* user;
 public:
 	Reserva(){}
-	Reserva(Vuelo *vuelo, vector<Asiento*> asiento) {
+	Reserva(Vuelo *vuelo, vector<Asiento*> asiento, Pasajero* user) {
 		for (int i = 0; i < asiento.size(); i++)
 		{
 			asiento[i]->setEstado(1);
@@ -20,6 +20,7 @@ public:
 
 		this->vuelo = vuelo;
 		this->asiento = asiento;
+		this->user = user;
 	}
 	~Reserva(){}
 

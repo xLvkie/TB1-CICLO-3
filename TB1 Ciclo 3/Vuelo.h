@@ -77,6 +77,7 @@ public:
         for (int i = 0; i < asientos.size(); i++)
         {
             asientos[i]->mostrarAsientoDisponible();
+
         }
     }
     void ordenarAsientosPorClasificacion() {

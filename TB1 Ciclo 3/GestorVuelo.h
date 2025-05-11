@@ -171,10 +171,29 @@ public:
         }
     }
 
-    bool isVuelosEncontrados() {
-        return vuelosEncontrados; 
+    Vuelo* getVueloPorCodigo(int codigo) {
+        for (auto itMes = vuelosPorMes.begin(); itMes != vuelosPorMes.end(); ++itMes) {
+            int mes = itMes->first;
+            map<int, vector<Vuelo*>>& dias = itMes->second;
+
+            for (auto itDia = dias.begin(); itDia != dias.end(); ++itDia) {
+                int dia = itDia->first;
+                vector<Vuelo*>& listaVuelos = itDia->second;
+
+                for (Vuelo* vuelo : listaVuelos) {
+                    if (vuelo->getCodigoVuelo() == codigo) {
+                        return vuelo;
+                    }
+                }
+            }
+        }
+        cout << "\nNo se encontro el vuelo con el codigo: " << codigo << endl;
+        return nullptr; 
     }
 
+    void mostrarUnVuelo(Vuelo* v) {
+        v->mostrarVuelo(); 
+    }
 
     //prueba
     Vuelo* getVuelo(int codeVuelo) {
@@ -198,6 +217,22 @@ public:
         return nullptr;
     }
 
+    //Asientos
+    void mostrarAsientosVuelo(Vuelo* v) {
+        v->mostrarAsientos();
+    }
+
+    void prueba() {
+        Vuelo* prueba = new Vuelo("Peru", "Chile", 1, 5, 30, 6, 500);
+
+        //prueba->ordenarAsientosPorClasificacion(); 
+        //prueba->ordenarAsientosPorEstado(); 
+        prueba->mostrarAsientos();
+    }
+
+    bool isVuelosEncontrados() {
+        return vuelosEncontrados;
+    }
 
 };
 

@@ -1,5 +1,6 @@
 #ifndef _GRESERVA_
 #define _GRESERVA_
+
 #include "Pila.h"
 #include "Reserva.h"
 #include "Gestortxt.h"
@@ -10,6 +11,7 @@ class GestorReserva
 private:
 	Pila<Reserva> reservas;
 	GestorVuelo Gvuelo;
+	GestorUsuarios gUsuarios;
 	
 public:
 	GestorReserva(GestorVuelo&Gvuelo){
@@ -55,7 +57,10 @@ public:
 			asientos.push_back(aAux);
 		}
 
-		Reserva a(vAux, asientos);
+		Pasajero* pAux = gUsuarios.agregarUsuario();
+		
+
+		Reserva a(vAux, asientos, pAux);
 
 		reservas.push(a);
 
