@@ -21,12 +21,12 @@ public:
 	~GestorReserva(){}
 
 	void reservar() {
-		int numAsientos; int aux2 = 0; int auxExcesoPorVip = 0; int cont = 0; 
+		int aux; int numAsientos; int aux2 = 0; int auxExcesoPorVip = 0; int cont = 0;
 		
 		cout << "\n === Reservar Vuelo ===\n"; 
-		cout << "Ingrese id del vuelo: "; cin >> numAsientos;
+		cout << "Ingrese id del vuelo: "; cin >> aux;
 
-		Vuelo* vAux = this->Gvuelo.getVuelo(numAsientos); //system("pause");
+		Vuelo* vAux = this->Gvuelo.getVuelo(aux); //system("pause");
 		if (vAux == nullptr) return; //REGRESA SI EL VUELO NO EXISTE
 		Asiento* aAux;
 
