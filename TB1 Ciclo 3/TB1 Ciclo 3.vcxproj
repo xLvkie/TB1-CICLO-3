@@ -115,6 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asiento.h" />
+    <ClInclude Include="Checkin.h" />
     <ClInclude Include="GestorReserva.h" />
     <ClInclude Include="Gestortxt.h" />
     <ClInclude Include="GestorUsuarios.h" />

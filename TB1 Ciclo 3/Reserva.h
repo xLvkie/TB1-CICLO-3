@@ -25,6 +25,8 @@ public:
 	~Reserva(){}
 
 	void mostrar() {
+		cout << "Pasajero: \n";
+		user->toString();
 		cout << "Vuelo: \n";
 		vuelo->mostrarVuelo();
 		cout << "Asientos: \n";
@@ -34,6 +36,8 @@ public:
 		}
 	}
 
+	Pasajero* getPasajero() { return user; }
+	Vuelo* getVuelo() {	return vuelo; }
 };
 
 #endif // _RESERVA_
