@@ -6,11 +6,9 @@
 
 int main() {
     srand(time(NULL));
-    portada(); system("pause>0");
+    portada(); getch(); 
 
     GestorUsuarios gUsuario;
-
-    Lista<Pasajero*> pLista;
 
     GestorVuelo gVuelos;
     gVuelos.generarVuelosAutomaticos();
@@ -173,10 +171,6 @@ int main() {
                     system("pause"); break;
                 case 6:
                     system("pause"); break;
-                case 10://pruebasss
-                    //gVuelos.prueba();
-                    gReservas.reservar();
-                    break;
                 default: cout << "Opción no válida\n"; system("pause"); break;
 
                 }
@@ -203,7 +197,7 @@ int main() {
         default: cout << "Opción inválida\n"; system("pause"); break;
         }
 
-        } while (opcion != 4);
+    } while (opcion != 4);
 
-        return 0;
-    }
+    return 0;
+}

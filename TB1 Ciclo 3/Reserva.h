@@ -10,9 +10,10 @@ private:
 	Vuelo* vuelo;
 	vector<Asiento*> asiento;
 	Pasajero* user;
+	int precioFinal; 
 public:
 	Reserva(){}
-	Reserva(Vuelo *vuelo, vector<Asiento*> asiento, Pasajero* user) {
+	Reserva(Vuelo *vuelo, vector<Asiento*> asiento, Pasajero* user, int precioFinal) {
 		for (int i = 0; i < asiento.size(); i++)
 		{
 			asiento[i]->setEstado(1);
@@ -21,6 +22,7 @@ public:
 		this->vuelo = vuelo;
 		this->asiento = asiento;
 		this->user = user;
+		this->precioFinal = precioFinal;
 	}
 	~Reserva(){}
 
@@ -32,8 +34,10 @@ public:
 		{
 			asiento[i]->mostrarAsiento();
 		}
+		cout << "Monto a pagar: " << precioFinal << endl; 
 	}
 
+	int getPrecioFinal() { return precioFinal; }
 };
 
 #endif // _RESERVA_

@@ -18,7 +18,7 @@ string paises[10] = { "Peru", "Chile", "Argentina", "Brasil", "Colombia", "Ecuad
 class Vuelo {
 private:
     string origen, destino;
-    int diaIda, mesIda, diaVuelta, mesVuelta, codigoVuelo;
+    int diaIda, mesIda, diaVuelta, mesVuelta, codigoVuelo, precio;
     vector<Asiento*> asientos;
 
 public:
@@ -37,12 +37,16 @@ public:
 
             asientos.push_back(new Asiento(clasificacion, estado, idAsiento));
         }
+
+        //Asignar precios aleatorios
+        precio = (250 + rand() % (1000 + 1 - 250)) * 2; // pq es ida y vuelta
     }
     ~Vuelo() {}
 
     void mostrarVuelo() {
         cout << "Vuelo nro: " << codigoVuelo << " |  " << origen << " - " << destino << endl;
-        cout << "Ida: " << diaIda << "/" << mesIda << "\nVuelta: " << diaVuelta << "/" << mesVuelta << endl << endl;
+        cout << "Ida: " << diaIda << "/" << mesIda << "\nVuelta: " << diaVuelta << "/" << mesVuelta << 
+            "\nPrecio en USD:" << precio << endl << endl;
     }
 
     string getOrigen() { return origen; }
@@ -52,6 +56,7 @@ public:
     int getDiaVuelta() { return diaVuelta; }
     int getMesVuelta() { return mesVuelta; }
     int getCodigoVuelo() { return codigoVuelo; }
+    int getPrecio() { return precio; }
     vector<Asiento*> getVectorAsientos() { return asientos; }
 
     Asiento* getAsiento(int idAsiento) {
@@ -104,68 +109,5 @@ public:
         }
     }
 };
-
-// --- Funciones externas ---
-
-
-Vuelo* pedirDatosVuelo() {
-    int opcionOrigen, opcionDestino;
-    int diaIda, diaVuelta, mesIda, mesVuelta;
-
-    cout << "=== Lista de países disponibles ===\n";
-    for (int i = 0; i < 10; i++) {
-        cout << i + 1 << " - " << paises[i] << endl;
-    }
-
-    do {
-        cout << "Seleccione el número del país de origen: ";
-        cin >> opcionOrigen;
-        if (opcionOrigen < 1 || opcionOrigen > 10)
-            cout << "Opción inválida. Intente de nuevo.\n";
-    } while (opcionOrigen < 1 || opcionOrigen > 10);
-
-    do {
-        cout << "Seleccione el número del país de destino: ";
-        cin >> opcionDestino;
-        if (opcionDestino < 1 || opcionDestino > 10)
-            cout << "Opción inválida. Intente de nuevo.\n";
-    } while (opcionDestino < 1 || opcionDestino > 10);
-
-    do {
-        cout << "Día de ida (1-30): ";
-        cin >> diaIda;
-        if (diaIda < 1 || diaIda > 30)
-            cout << "Día inválido.\n";
-    } while (diaIda < 1 || diaIda > 30);
-
-    do {
-        cout << "Mes de ida (1-12): ";
-        cin >> mesIda;
-        if (mesIda < 1 || mesIda > 12)
-            cout << "Mes inválido.\n";
-    } while (mesIda < 1 || mesIda > 12);
-
-    do {
-        cout << "Día de vuelta (1-30): ";
-        cin >> diaVuelta;
-        if (diaVuelta < 1 || diaVuelta > 30)
-            cout << "Día inválido.\n";
-    } while (diaVuelta < 1 || diaVuelta > 30);
-
-    do {
-        cout << "Mes de vuelta (1-12): ";
-        cin >> mesVuelta;
-        if (mesVuelta < 1 || mesVuelta > 12)
-            cout << "Mes inválido.\n";
-    } while (mesVuelta < 1 || mesVuelta > 12);
-
-
-    cin.ignore();
-
-    string origen = paises[opcionOrigen - 1];
-    string destino = paises[opcionDestino - 1];
-
-    return new Vuelo(origen, destino, diaIda, mesIda, diaVuelta, mesVuelta, 1);
-}
 
 #endif // !__VUELO__
