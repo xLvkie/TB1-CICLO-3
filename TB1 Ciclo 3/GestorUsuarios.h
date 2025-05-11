@@ -2,11 +2,12 @@
 #define _GESTORUSUARIOS_
 #include "Gestortxt.h"
 #include "Pasajero.h"
+#include "ListaDoble.h"
 class GestorUsuarios
 {
 private:
 	Gestortxt<string> archivo;
-	vector<Pasajero> pLista;
+	Lista<Pasajero*> pLista;
 public:
 	GestorUsuarios::GestorUsuarios() : archivo("Usuarios.txt") {
         leerUsuarios();
@@ -14,13 +15,13 @@ public:
 	~GestorUsuarios(){}
 
     void leerUsuarios() {
-        pLista.clear();
+        pLista = Lista<Pasajero*>();
 
         for (int i = 0; i < archivo.size(); i += 4)
         {
             if (archivo.size() >= i + 4) {
-                pLista.push_back(Pasajero(archivo.getLine(i), archivo.getLine(i + 1), archivo.getLine(i + 2), archivo.getLine(i + 3)));
-            } 
+                pLista.insertarFinal(new Pasajero(archivo.getLine(i), archivo.getLine(i + 1), archivo.getLine(i + 2), archivo.getLine(i + 3)));
+            }
         }
     }
 
@@ -59,11 +60,7 @@ public:
     }
 
     void mostrar(){
-        for (int i = 0; i < pLista.size(); i++)
-        {
-            pLista[i].mostrar();
-            cout << endl;
-        }
+        pLista.mostrarPasajero();
     }
 };
 
