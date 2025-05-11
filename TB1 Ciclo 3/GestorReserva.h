@@ -26,7 +26,7 @@ public:
 		cout << "\n === Reservar Vuelo ===\n"; 
 		cout << "Ingrese id del vuelo: "; cin >> aux;
 
-		Vuelo* vAux = this->Gvuelo.getVuelo(aux); //system("pause");
+		Vuelo* vAux = this->Gvuelo.getVueloPorCodigo(aux); //system("pause");
 		if (vAux == nullptr) return; //REGRESA SI EL VUELO NO EXISTE
 		Asiento* aAux;
 
@@ -77,7 +77,7 @@ public:
 		cout << "Monto a pagar: " << calcularPrecioFinal() << endl << endl;
 
 		getch(); 
-		Pasajero* pAux = gUsuarios.agregarUsuario();		
+		Pasajero* pAux = gUsuarios.agregarUsuario();
 
 		Reserva a(vAux, asientos, pAux, calcularPrecioFinal());
 

@@ -66,7 +66,7 @@ int main() {
                     gVuelos.mostrarTodosLosVuelos();
                     
                     gReservas.reservar(); 
-                    // -- Conclusión --
+                    
                     system("pause"); break;
                 case 2:
                     // -- Validar Datos --
@@ -136,7 +136,7 @@ int main() {
                         gReservas.reservar();
                     }
                     system("pause"); break;
-                case 5:
+                case 5: //Busqueda especifica Origen - Destino - Fecha Ida
                     int auxOrigen2, auxDestino2, auxDiaIda, auxMesIda;
                     do {
                         system("cls"); tituloVuelo();

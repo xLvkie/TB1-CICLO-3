@@ -9,7 +9,7 @@ private:
 	Gestortxt<string> archivo;
 	Lista<Pasajero*> pLista;
 public:
-	GestorUsuarios::GestorUsuarios() : archivo("Usuarios.txt") {
+	GestorUsuarios() : archivo("Usuarios.txt") {
         leerUsuarios();
 	}
 	~GestorUsuarios(){}
