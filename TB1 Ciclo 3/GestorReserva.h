@@ -3,7 +3,7 @@
 #include "Pila.h"
 #include "Reserva.h"
 #include "Gestortxt.h"
-#include "conio.h"
+#include <conio.h>
 using namespace std;
 class GestorReserva
 {

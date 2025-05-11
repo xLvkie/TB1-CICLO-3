@@ -170,29 +170,6 @@ public:
         }
     }
 
-    Vuelo* getVueloPorCodigo(int codigo) {
-        for (auto itMes = vuelosPorMes.begin(); itMes != vuelosPorMes.end(); ++itMes) {
-            int mes = itMes->first;
-            map<int, vector<Vuelo*>>& dias = itMes->second;
-
-            for (auto itDia = dias.begin(); itDia != dias.end(); ++itDia) {
-                int dia = itDia->first;
-                vector<Vuelo*>& listaVuelos = itDia->second;
-
-                for (Vuelo* vuelo : listaVuelos) {
-                    if (vuelo->getCodigoVuelo() == codigo) {
-                        return vuelo;
-                    }
-                }
-            }
-        }
-        cout << "\nNo se encontro el vuelo con el codigo: " << codigo << endl;
-        return nullptr; 
-    }
-
-    void mostrarUnVuelo(Vuelo* v) {
-        v->mostrarVuelo(); 
-    }
 
     //prueba
     Vuelo* getVuelo(int codeVuelo) {

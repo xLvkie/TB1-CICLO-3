@@ -1,6 +1,5 @@
 #ifndef _GESTORUSUARIOS_
 #define _GESTORUSUARIOS_
-#include "vector" //para implemmentar rapido...
 #include "Gestortxt.h"
 #include "Pasajero.h"
 class GestorUsuarios
@@ -21,7 +20,7 @@ public:
         {
             if (archivo.size() >= i + 4) {
                 pLista.push_back(Pasajero(archivo.getLine(i), archivo.getLine(i + 1), archivo.getLine(i + 2), archivo.getLine(i + 3)));
-            }
+            } 
         }
     }
 
