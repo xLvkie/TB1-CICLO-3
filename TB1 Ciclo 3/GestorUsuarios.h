@@ -1,6 +1,5 @@
 #ifndef _GESTORUSUARIOS_
 #define _GESTORUSUARIOS_
-#include "vector" //para implemmentar rapido...
 #include "Gestortxt.h"
 #include "Pasajero.h"
 #include "ListaDoble.h"
