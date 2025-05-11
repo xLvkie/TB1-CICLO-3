@@ -49,7 +49,12 @@ public:
                 int mesIda = mes;
                 int mesVuelta;
 
+
+
                 do {
+                    if (mesIda == 12 && diaIda == diaVuelta) {
+                        diaVuelta = (diaIda % 30) + 1; // fuerza a que sean distintos
+                    }
                     mesVuelta = mesIda + rand() % (13 - mesIda);
                 } while (diaIda == diaVuelta && mesVuelta == mesIda);
 
@@ -151,9 +156,7 @@ public:
         }
     }
 
-    //Borre void mostrarVuelosDatosVuelta(string origen, string destino, int mesVuelta, int diaVuelta) { 
-    // Porque el map busca valores con el indice de dia ida y mes ida, no diaVuelta y mes vuelta
-
+    //Recursivas
     void mostrarVuelosDelDia(vector<Vuelo*>& vuelos, size_t i = 0) {
         if (i >= vuelos.size()) return;
         vuelos[i]->mostrarVuelo();
@@ -179,7 +182,7 @@ public:
         mostrarTodosLosVuelosRec(vuelosPorMes, vuelosPorMes.begin());
     }
 
-    Vuelo* getVueloPorCodigo(int codigo) {
+    void ordenarVuelosPorPrecio() {
         for (auto itMes = vuelosPorMes.begin(); itMes != vuelosPorMes.end(); ++itMes) {
             int mes = itMes->first;
             map<int, vector<Vuelo*>>& dias = itMes->second;
@@ -189,21 +192,13 @@ public:
                 vector<Vuelo*>& listaVuelos = itDia->second;
 
                 for (Vuelo* vuelo : listaVuelos) {
-                    if (vuelo->getCodigoVuelo() == codigo) {
-                        return vuelo;
-                    }
+                    //para probar ordenamiento - en trabajo 
                 }
             }
         }
-        cout << "\nNo se encontro el vuelo con el codigo: " << codigo << endl;
-        return nullptr; 
     }
 
-    void mostrarUnVuelo(Vuelo* v) {
-        v->mostrarVuelo(); 
-    }
-
-    Vuelo* getVuelo(int codeVuelo) {
+    Vuelo* getVueloPorCodigo(int codeVuelo) {
         for (auto itMes = vuelosPorMes.begin(); itMes != vuelosPorMes.end(); ++itMes) {
             int mes = itMes->first;
             map<int, vector<Vuelo*>>& dias = itMes->second;

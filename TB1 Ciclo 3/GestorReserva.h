@@ -23,7 +23,7 @@ public:
 	~GestorReserva(){}
 
 	void reservar() {
-		int numAsientos; int aux2 = 0; int auxExcesoPorVip = 0; int cont = 0; 
+		int aux; int numAsientos; int aux2 = 0; int auxExcesoPorVip = 0; int cont = 0;
 		char opc;
 		cout << "¿Desea reservar un vuelo? y/n"; cin >> opc;
 		if (opc != 'y') return;
@@ -37,9 +37,9 @@ public:
 		Pasajero* pAux = gUsuarios.getLista().getDato(aux2-1);
 
 
-		cout << "Ingrese id del vuelo: "; cin >> numAsientos;
+		cout << "Ingrese id del vuelo: "; cin >> aux;
 
-		Vuelo* vAux = this->Gvuelo.getVuelo(numAsientos); //system("pause");
+		Vuelo* vAux = this->Gvuelo.getVueloPorCodigo(aux); //system("pause");
 		if (vAux == nullptr) return; //REGRESA SI EL VUELO NO EXISTE
 		Asiento* aAux;
 
