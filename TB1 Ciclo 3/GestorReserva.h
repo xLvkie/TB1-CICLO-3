@@ -6,6 +6,7 @@
 #include "Reserva.h"
 #include "Gestortxt.h"
 #include "GestorUsuarios.h"
+#include "GestorVuelo.h"
 #include <conio.h>
 using namespace std;
 class GestorReserva
@@ -23,8 +24,18 @@ public:
 
 	void reservar() {
 		int aux; int numAsientos; int aux2 = 0; int auxExcesoPorVip = 0; int cont = 0;
+		char opc;
+		cout << "¿Desea reservar un vuelo? y/n"; cin >> opc;
+		if (opc != 'y') return;
 		
-		cout << "\n === Reservar Vuelo ===\n"; 
+		cout << "\n === Reservar Vuelo ===\n";
+		cout << "Seleccione usuario: \n";
+		gUsuarios.mostrar();
+		cin >> aux2;
+
+		Pasajero* pAux = gUsuarios.getLista().getDato(aux2-1);
+
+
 		cout << "Ingrese id del vuelo: "; cin >> aux;
 
 		Vuelo* vAux = this->Gvuelo.getVueloPorCodigo(aux); //system("pause");
@@ -78,7 +89,7 @@ public:
 		cout << "Monto a pagar: " << calcularPrecioFinal() << endl << endl;
 
 		getch(); 
-		Pasajero* pAux = gUsuarios.agregarUsuario();
+			
 
 		Reserva a(vAux, asientos, pAux, calcularPrecioFinal());
 

@@ -21,6 +21,7 @@ public:
 	void insertarFinal(T v);
 	bool esVacio();
 	void mostrarPasajero();
+	T getDato(int index);
 
 	bool test(string nombres, string apellidos, string correo, string dni);
 };
@@ -117,6 +118,25 @@ bool Lista<T>::test(string nombres, string apellidos, string correo, string dni)
 		nodo = nodo->siguiente;
 	}
 	return false;
+
+	
+}
+
+template<class T>
+T Lista<T>::getDato(int index) {
+	Nodo<T>* nodo = inicio;
+	int contador = 0;
+
+	while (nodo != nullptr) {
+		if (contador == index) {
+			return nodo->dato;
+		}
+		nodo = nodo->siguiente;
+		contador++;
+	}
+
+	cout << "Fuera de rango"; system("pause>0");
+	return nullptr;
 }
 
 #endif // !__LISTA_DOBLE__

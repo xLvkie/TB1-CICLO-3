@@ -180,7 +180,19 @@ public:
     }
 
     void ordenarVuelosPorPrecio() {
+        for (auto itMes = vuelosPorMes.begin(); itMes != vuelosPorMes.end(); ++itMes) {
+            int mes = itMes->first;
+            map<int, vector<Vuelo*>>& dias = itMes->second;
 
+            for (auto itDia = dias.begin(); itDia != dias.end(); ++itDia) {
+                int dia = itDia->first;
+                vector<Vuelo*>& listaVuelos = itDia->second;
+
+                for (Vuelo* vuelo : listaVuelos) {
+                    //para probar ordenamiento
+                }
+            }
+        }
     }
 
     Vuelo* getVueloPorCodigo(int codeVuelo) {

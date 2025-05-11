@@ -81,8 +81,9 @@ void seleccionPais() {
 
 void menuCheckin() {
 	cout << "=====| Menu de Check in |=====\n";
-	cout << "1. Ver todas las reservas\n";
-	cout << "2. Salir\n";
+	cout << "1. Ver reservas\n";
+	cout << "2. Check in\n";
+	cout << "3. Salir\n";
 }
 
 #endif // !__SISTEMA__
