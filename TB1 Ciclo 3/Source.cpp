@@ -18,7 +18,6 @@ int main() {
 
     int opcion = 0;
     string destino, origen;
-    Pasajero* nuevo;
 
     do {
         system("cls"); menuPrincipal();
@@ -39,9 +38,6 @@ int main() {
                     system("cls"); tituloUsuario();
 
                     gUsuario.agregarUsuario();
-
-                    nuevo = pedirDatosPasajero();
-                    pLista.insertarInicio(nuevo);
 
                     // -- Conclusión --
                     cout << "Pasajero registrado correctamente\n";

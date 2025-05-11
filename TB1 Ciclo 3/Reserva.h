@@ -8,12 +8,15 @@ class Reserva
 {
 private:
 	Vuelo *vuelo;
-	Asiento *asiento;
+	vector<Asiento*> asiento;
 	Pasajero user;
 public:
 	Reserva(){}
-	Reserva(Vuelo *vuelo, Asiento *asiento) {
-		asiento->setEstado(1);
+	Reserva(Vuelo *vuelo, vector<Asiento*> asiento) {
+		for (int i = 0; i < asiento.size(); i++)
+		{
+			asiento[i]->setEstado(1);
+		}
 
 		this->vuelo = vuelo;
 		this->asiento = asiento;
@@ -23,8 +26,11 @@ public:
 	void mostrar() {
 		cout << "Vuelo: \n";
 		vuelo->mostrarVuelo();
-		cout << "Asiento: ";
-		asiento->mostrarAsiento();
+		cout << "Asientos: \n";
+		for (int i = 0; i < asiento.size(); i++)
+		{
+			asiento[i]->mostrarAsiento();
+		}
 	}
 
 };

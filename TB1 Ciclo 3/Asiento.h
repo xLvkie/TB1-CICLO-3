@@ -24,6 +24,9 @@ public:
 	void setEstado(bool a) {
 		estado = a;
 	}
+	bool getEstado() {
+		return estado;
+	}
 
 	void mostrarAsientoDisponible() {
 		if (estado == false)mostrarAsiento();
