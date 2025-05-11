@@ -27,9 +27,8 @@ public:
 	~Reserva(){}
 
 	void mostrar() {
-		cout << "Pasajero: \n";
-		user->toString();
-		cout << "Vuelo: \n";
+		cout << "\nPasajero: \n";
+		cout << user->getNombres() << " " << user->getApellidos() << endl;
 		vuelo->mostrarVuelo();
 		cout << "Asientos: \n";
 		for (int i = 0; i < asiento.size(); i++)

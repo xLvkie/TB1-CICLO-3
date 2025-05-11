@@ -7,7 +7,7 @@
 
 int main() {
     srand(time(NULL));
-    portada(); getch(); 
+    portada(); getch();
 
     GestorUsuarios gUsuario; gUsuario.leerUsuarios();
 
