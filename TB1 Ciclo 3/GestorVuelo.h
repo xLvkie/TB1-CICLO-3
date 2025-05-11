@@ -49,6 +49,8 @@ public:
                 int mesIda = mes;
                 int mesVuelta;
 
+
+
                 do {
                     mesVuelta = mesIda + rand() % (13 - mesIda);
                 } while (diaIda == diaVuelta && mesVuelta == mesIda);
@@ -151,9 +153,7 @@ public:
         }
     }
 
-    //Borre void mostrarVuelosDatosVuelta(string origen, string destino, int mesVuelta, int diaVuelta) { 
-    // Porque el map busca valores con el indice de dia ida y mes ida, no diaVuelta y mes vuelta
-
+    //Recursivas
     void mostrarVuelosDelDia(vector<Vuelo*>& vuelos, size_t i = 0) {
         if (i >= vuelos.size()) return;
         vuelos[i]->mostrarVuelo();
@@ -189,7 +189,7 @@ public:
                 vector<Vuelo*>& listaVuelos = itDia->second;
 
                 for (Vuelo* vuelo : listaVuelos) {
-                    //para probar ordenamiento
+                    //para probar ordenamiento - en trabajo 
                 }
             }
         }
