@@ -51,11 +51,11 @@ void tituloUsuario() {
 
 void menuVuelos() {
 	cout << "=====|  Menu de Vuelos  |=====\n";
-	cout << "1. Listar todos los vuelos\n";
-	cout << "2. Listar vuelos por mes\n";
-	cout << "3. Listar vuelos por pais\n";
-	cout << "4. Listar vuelos por Fecha Especifica\n";
-	cout << "5. Listar vuelos por Origen, Destino y Fecha de Ida\n";
+	cout << "1. Ver todos los vuelos\n";
+	cout << "2. Buscar vuelos por mes\n";
+	cout << "3. Buscar vuelos por pais\n";
+	cout << "4. Buscar vuelos por Fecha Especifica\n";
+	cout << "5. Buscar vuelos por Origen, Destino y Fecha de Ida\n";
 	cout << "6. Salir\n";
 	cout << "10. Correr las pruebas\n";
 }
