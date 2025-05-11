@@ -5,43 +5,52 @@
 
 class CheckIn {
 private:
-
-    //ideas
+	Reserva* reserva;
 
 public:
-    CheckIn(){}
-    ~CheckIn(){}
-    void procesarCheckIn(GestorReserva& gestorReserva) {
-        //deberia ser un booleano, si encuentra de que si es reserva que se muestre el checkin :v
+	CheckIn(){}
+	CheckIn(Reserva* reserva) : reserva(reserva) {}
+	~CheckIn(){}
 
-        string dni;
-        int codigoVuelo;
+	Reserva* procesarCheckIn(GestorReserva& gestorReserva) {
+		//deberia ser un booleano, si encuentra de que si es reserva que se muestre el checkin :v
 
-        cout << "Ingrese el DNI del pasajero: ";
-        cin >> dni;
+		string dni;
+		int codigoVuelo;
 
-        cout << "Ingrese Codigo del vuelo: ";
-        cin >> codigoVuelo;
+		cout << "Ingrese el DNI del pasajero: ";
+		cin >> dni;
 
-        bool reservaEncontrada = false;
-        Pila<Reserva> reservasAux = gestorReserva.getReservas(); //no referencia sino copia
-  
-        while (!reservasAux.estaVacia()) {
-            Reserva reserva = reservasAux.pop();
+		cout << "Ingrese Codigo del vuelo: ";
+		cin >> codigoVuelo;
 
-            if (reserva.getPasajero()->getDni() == dni && reserva.getVuelo()->getCodigoVuelo() == codigoVuelo) {
-                // Mostrar la tarjeta de embarque
-                cout << "\nCheck-in exitoso!\n\n";
-                reserva.mostrar(); 
-                reservaEncontrada = true;
-                break;
-            }
-        }
+		bool reservaEncontrada = false;
+		Pila<Reserva> reservasAux = gestorReserva.getReservas(); //no referencia sino copia
 
-        if (!reservaEncontrada) {
-            cout << "No se encontró una reserva con el DNI y el código de vuelo proporcionados." << endl;
-        }
-    }
+		while (!reservasAux.estaVacia()) {
+			Reserva reserva = reservasAux.pop();
+
+			if (reserva.getPasajero()->getDni() == dni && reserva.getVuelo()->getCodigoVuelo() == codigoVuelo) {
+				// Mostrar la tarjeta de embarque
+				cout << "\nCheck-in exitoso!\n\n";
+				mostrarTarjeta();
+				reservaEncontrada = true;
+				return new Reserva(reserva);
+				break;
+			}
+		}
+
+		if (!reservaEncontrada) {
+			cout << "No se encontró una reserva con el DNI y el código de vuelo proporcionados." << endl;
+			return nullptr;
+		}
+	}
+
+	void mostrarTarjeta() {
+		cout << "|=============== TARJETA DE EMBARQUE ===============|\n";
+		reserva->mostrarDatosCompletos();
+		cout << "|===================================================|\n";
+	}
 };
 
 #endif

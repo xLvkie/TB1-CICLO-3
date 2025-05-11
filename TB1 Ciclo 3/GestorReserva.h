@@ -92,7 +92,7 @@ public:
 
 		while (!reservas.estaVacia()) {
 			Reserva val = reservas.pop();
-			val.mostrar();
+			val.mostrarDatosVuelo();
 			aux.push(val);
 		}
 
