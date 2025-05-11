@@ -73,6 +73,9 @@ public:
         pLista.mostrarPasajero();
     }
 
+    Lista<Pasajero*> getLista() {
+        return pLista;
+    }
 };
 
 #endif // !_GESTORUSUARIOS_
