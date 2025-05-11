@@ -1,10 +1,7 @@
 #ifndef __GESTOR_VUELOS__
 #define __GESTOR_VUELOS__
 
-#include <windows.h>  // Para Sleep()
-#include <iomanip>    // Para setw()
 #include <map>
-#include <cctype>
 #include <vector>
 #include "Vuelo.h" 
 #include <set>
@@ -22,7 +19,7 @@ class GestorVuelo {
 private:
     //clave: int | valor: [clave: int, valor: vector de vuelos]
     map<int, map<int, vector<Vuelo*>>> vuelosPorMes;
-
+    bool vuelosEncontrados;  
 public:
     void agregarVuelo(Vuelo* vuelo) {
         int mesIda = vuelo->getMesIda();
@@ -73,10 +70,12 @@ public:
     }
 
     void mostrarVuelosEnFecha(int mes, int dia) {
+        vuelosEncontrados = false;
         if (vuelosPorMes.count(mes) && vuelosPorMes[mes].count(dia)) {
             cout << "\n--- Vuelos para el " << dia << "/" << mes << " ---\n";
             for (Vuelo* v : vuelosPorMes[mes][dia]) {
                 v->mostrarVuelo();
+                vuelosEncontrados = true;
             }
         }
         else {
@@ -85,6 +84,7 @@ public:
     }
 
     void mostrarVuelosPorMes(int mes) {
+        vuelosEncontrados = false;
         if (vuelosPorMes.count(mes)) {
             cout << "\n=== Vuelos registrados para el mes " << meses[mes - 1] << " ===\n";
             for (int dia = 1; dia <= 30; dia++) {
@@ -92,6 +92,7 @@ public:
                     cout << "\n--- Vuelos del Dia " << dia << " ---\n";
                     for (Vuelo* v : vuelosPorMes[mes][dia]) {
                         v->mostrarVuelo();
+                        vuelosEncontrados = true;
                     }
                 }
             }
@@ -103,7 +104,7 @@ public:
 
     void mostrarVuelosPorPaises(string origen, string destino) {
         cout << "\n=== Vuelos de " << origen << " a " << destino << " ==== \n";
-        bool vuelosEncontrados = false;
+        vuelosEncontrados = false;
 
         for (auto itMes = vuelosPorMes.begin(); itMes != vuelosPorMes.end(); ++itMes) {
             int mes = itMes->first;
@@ -130,7 +131,7 @@ public:
 
     void mostrarVuelosDatosIda(string origen, string destino, int mesIda, int diaIda) {
         cout << "\n=== Vuelos segun Origen - Destino - Fecha de Ida ===\n";
-        bool vuelosEncontrados = false;
+        vuelosEncontrados = false;
 
         if (vuelosPorMes.count(mesIda) && vuelosPorMes[mesIda].count(diaIda)) {
             vector<Vuelo*>& listaVuelos = vuelosPorMes[mesIda][diaIda];
@@ -170,6 +171,10 @@ public:
         }
     }
 
+    bool isVuelosEncontrados() {
+        return vuelosEncontrados; 
+    }
+
 
     //prueba
     Vuelo* getVuelo(int codeVuelo) {
@@ -193,20 +198,6 @@ public:
         return nullptr;
     }
 
-    //Asientos
-    void mostrarAsientosVuelo(Vuelo* v) {
-        v->mostrarAsientos();
-    }
-
-    void prueba() {
-        Vuelo* prueba = new Vuelo("Peru", "Chile", 1, 5, 30, 6, 500);
-
-        //prueba->ordenarAsientosPorClasificacion(); 
-        //prueba->ordenarAsientosPorEstado(); 
-        prueba->mostrarAsientos();
-    }
-
-    
 
 };
 
