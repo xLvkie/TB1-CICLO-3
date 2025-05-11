@@ -66,7 +66,8 @@ int main() {
                     // -- Mostrar Todos los Vuelos --
                     system("cls"); tituloVuelo();
                     gVuelos.mostrarTodosLosVuelos();
-                    // -- Conclusión --
+                    
+                    gReservas.reservar(); 
                     system("pause"); break;
                 case 2:
                     // -- Validar Datos --
@@ -84,7 +85,11 @@ int main() {
                     // -- Mostrar Vuelos por Mes --
                     system("cls"); tituloVuelo();
                     gVuelos.mostrarVuelosPorMes(auxValor);
-                    // -- Conclusión --
+
+                    if (gVuelos.isVuelosEncontrados()) {
+                        cout << "\n";
+                        gReservas.reservar();
+                    }
                     system("pause"); break;
                 case 3:
                     // -- Validar Datos --
@@ -105,7 +110,12 @@ int main() {
 
                     // -- Mostrar Vuelos por Paises --
                     gVuelos.mostrarVuelosPorPaises(origen, destino);
-                    // -- Conclusión --
+
+                    if (gVuelos.isVuelosEncontrados()) {
+                        cout << "\n"; 
+                        gReservas.reservar(); 
+                    }
+
                     system("pause"); break;
                 case 4:
                     int auxDia, auxMes;
@@ -121,6 +131,11 @@ int main() {
                     } while ((auxDia < 1 || auxDia > 31) || (auxMes < 1 || auxMes > 12));
 
                     gVuelos.mostrarVuelosEnFecha(auxMes, auxDia);
+
+                    if (gVuelos.isVuelosEncontrados()) {
+                        cout << "\n";
+                        gReservas.reservar();
+                    }
                     system("pause"); break;
                 case 5:
                     int auxOrigen2, auxDestino2, auxDiaIda, auxMesIda;
@@ -149,13 +164,14 @@ int main() {
                     } while ((auxDiaIda < 1 || auxDiaIda > 31) || (auxMesIda < 1 || auxMesIda > 12));
 
                     gVuelos.mostrarVuelosDatosIda(origen, destino, auxMesIda, auxDiaIda);
+                   
+                    if (gVuelos.isVuelosEncontrados()) {
+                        cout << "\n";
+                        gReservas.reservar();
+                    }
                     system("pause"); break;
                 case 6:
                     system("pause"); break;
-                case 10://pruebasss
-                    //gVuelos.prueba();
-                    gReservas.reservar();
-                    break;
                 default: cout << "Opción no válida\n"; system("pause"); break;
 
                 }
