@@ -49,8 +49,6 @@ public:
                 int mesIda = mes;
                 int mesVuelta;
 
-
-
                 do {
                     if (mesIda == 12 && diaIda == diaVuelta) {
                         diaVuelta = (diaIda % 30) + 1; // fuerza a que sean distintos
@@ -58,13 +56,20 @@ public:
                     mesVuelta = mesIda + rand() % (13 - mesIda);
                 } while (diaIda == diaVuelta && mesVuelta == mesIda);
 
-                string codigoVuelo;
-                do {
-                    codigoVuelo = "";
-                    for (int j = 0; j < 5; j++) {
-                        codigoVuelo += '0' + rand() % 10;
+                //Lambda para generar codigos de vuelo 
+                auto generarCodigoVuelo = []() { 
+                    string codigo; 
+                    for (int j = 0; j < 5; j++) { 
+                        codigo += '0' + rand() % 10; 
                     }
-                } while (codigosGenerados.count(codigoVuelo) > 0);
+                    return codigo; 
+                };
+
+                //Validando que los codigos sean unicos
+                string codigoVuelo; 
+                do { 
+                    codigoVuelo = generarCodigoVuelo(); 
+                } while (codigosGenerados.count(codigoVuelo) > 0);  
 
                 codigosGenerados.insert(codigoVuelo);
 
