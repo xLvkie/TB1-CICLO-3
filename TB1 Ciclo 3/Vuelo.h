@@ -94,29 +94,6 @@ public:
 
         }
     }
-    void ordenarAsientosPorClasificacion() {
-        for (int i = 0; i < asientos.size() - 1; i++)
-        {
-            for (int j = 0; j < asientos.size() - 1 - i; j++)
-            {
-                if (asientos[j]->getClasificacion() < asientos[j + 1]->getClasificacion()) {
-                    swap(asientos[j], asientos[j + 1]);
-                }
-            }
-        }
-    }
-
-    void ordenarAsientosPorEstado() {
-        for (int i = 0; i < asientos.size() - 1; i++)
-        {
-            for (int j = 0; j < asientos.size() - 1 - i; j++)
-            {
-                if (asientos[j]->isEstado() < asientos[j + 1]->isEstado()) {
-                    swap(asientos[j], asientos[j + 1]);
-                }
-            }
-        }
-    }
 };
 
 #endif // !__VUELO__
