@@ -49,8 +49,6 @@ public:
                 int mesIda = mes;
                 int mesVuelta;
 
-
-
                 do {
                     if (mesIda == 12 && diaIda == diaVuelta) {
                         diaVuelta = (diaIda % 30) + 1; // fuerza a que sean distintos
@@ -58,13 +56,20 @@ public:
                     mesVuelta = mesIda + rand() % (13 - mesIda);
                 } while (diaIda == diaVuelta && mesVuelta == mesIda);
 
-                string codigoVuelo;
-                do {
-                    codigoVuelo = "";
-                    for (int j = 0; j < 5; j++) {
-                        codigoVuelo += '0' + rand() % 10;
+                //Lambda para generar codigos de vuelo 
+                auto generarCodigoVuelo = []() { 
+                    string codigo; 
+                    for (int j = 0; j < 5; j++) { 
+                        codigo += '0' + rand() % 10; 
                     }
-                } while (codigosGenerados.count(codigoVuelo) > 0);
+                    return codigo; 
+                };
+
+                //Validando que los codigos sean unicos
+                string codigoVuelo; 
+                do { 
+                    codigoVuelo = generarCodigoVuelo(); 
+                } while (codigosGenerados.count(codigoVuelo) > 0);  
 
                 codigosGenerados.insert(codigoVuelo);
 
@@ -182,19 +187,89 @@ public:
         mostrarTodosLosVuelosRec(vuelosPorMes, vuelosPorMes.begin());
     }
 
-    void ordenarVuelosPorPrecio() {
-        for (auto itMes = vuelosPorMes.begin(); itMes != vuelosPorMes.end(); ++itMes) {
-            int mes = itMes->first;
-            map<int, vector<Vuelo*>>& dias = itMes->second;
-
-            for (auto itDia = dias.begin(); itDia != dias.end(); ++itDia) {
-                int dia = itDia->first;
-                vector<Vuelo*>& listaVuelos = itDia->second;
-
-                for (Vuelo* vuelo : listaVuelos) {
-                    //para probar ordenamiento - en trabajo 
+    //Extraemos el vector de vuelos de map, sin importar la fecha
+    vector<Vuelo*> obtenerTodosLosVuelos() {
+        vector<Vuelo*> todos;
+        for (auto& itMes : vuelosPorMes) {
+            for (auto& itDia : itMes.second) {
+                for (Vuelo* v : itDia.second) {
+                    todos.push_back(v);
                 }
             }
+        }
+        return todos;
+    }
+
+    void ordenarTodosLosVuelosPorPrecio() {
+        vector<Vuelo*> todos = obtenerTodosLosVuelos();
+        int n = todos.size();
+
+        //Ordenamiento de selección
+        for (int i = 0; i < n - 1; i++) {
+            int menor = i;
+            for (int j = i + 1; j < n; j++) {
+                if (todos[j]->getPrecio() < todos[menor]->getPrecio()) {
+                    menor = j;
+                }
+            }
+
+            if (menor != i) {
+                Vuelo* temp = todos[i];
+                todos[i] = todos[menor];
+                todos[menor] = temp;
+            }
+        }
+
+        //Mostrar ya ordenados
+        for (Vuelo* v : todos) {
+            v->mostrarVuelo();
+        }
+    }
+
+    void ordenarTodosLosVuelosPorId() {
+        vector<Vuelo*> todos = obtenerTodosLosVuelos();
+        int n = todos.size();
+        bool ordenado; 
+
+        //Ordenamiento de Bubble Sort
+        for (int i = 0; i < n - 1; i++) { 
+            ordenado = true;
+            for (int j = 0; j < n - i - 1; j++) {
+                if (todos[j]->getCodigoVuelo() > todos[j + 1]->getCodigoVuelo()) {
+                    Vuelo* aux = todos[j];
+                    todos[j] = todos[j + 1];
+                    todos[j + 1] = aux;
+                    ordenado = false;
+                }
+            }
+            if (ordenado) break; 
+        }
+
+        //Mostrar ya ordenados
+        for (Vuelo* v : todos) {
+            v->mostrarVuelo();
+        }
+    }
+
+    void ordenarTodosLosVuelosPorPais() {
+        vector<Vuelo*> todos = obtenerTodosLosVuelos();
+        int n = todos.size();
+        int k; 
+
+        //Ordenamiento de Insercion
+        for (int i = 1; i < n; i++) {
+            Vuelo* aux = todos[i];
+            k = i - 1;
+            while (k >= 0 && aux->getIndicePaisOrigen() < todos[k]->getIndicePaisOrigen()) { 
+                todos[k + 1] = todos[k]; 
+                k--; 
+            }
+            todos[k + 1] = aux; 
+        }
+
+        //Mostrar ya ordenados
+        for (Vuelo* v : todos) {
+            v->mostrarVuelo();
         }
     }
 

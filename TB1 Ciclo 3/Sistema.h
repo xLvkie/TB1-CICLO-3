@@ -59,6 +59,14 @@ void menuVuelos() {
 	cout << "6. Salir\n";
 }
 
+void subMenuTodosLosVuelos() {
+	cout << "=====|  Como desea ordenar todos los vuelos  |=====\n";
+	cout << "1. Por precio\n";
+	cout << "2. Por pais de Origen\n";
+	cout << "3. Por codigo de vuelo\n";
+	cout << "4. Salir\n";
+}
+
 void tituloVuelo() {
 	cout << "=====|  Menu de Vuelos  |=====\n";
 }

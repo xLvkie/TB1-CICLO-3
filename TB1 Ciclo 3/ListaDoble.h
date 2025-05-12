@@ -81,7 +81,7 @@ bool Lista<T>::esVacio() {
 template<class T>
 void Lista<T>::mostrarPasajero() {
 	Nodo<T>* nodo = inicio; //Nodo<tipo T> apunta (*) hacua 'nodo'
-	cout << "# Lista de Pasajeros:\n";
+	cout << "Lista de Pasajeros:\n";
 
 	int i = 1;
 	while (nodo != nullptr) {
