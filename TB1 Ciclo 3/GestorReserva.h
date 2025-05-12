@@ -88,8 +88,6 @@ public:
 
 		cout << "\nEscogio " << cont << " VIP y " << numAsientos - cont << " Economico\n"; 
 		cout << "Monto a pagar: " << calcularPrecioFinal() << endl << endl;
-
-		getch(); 
 			
 		Reserva a(vAux, asientos, pAux, calcularPrecioFinal());
 

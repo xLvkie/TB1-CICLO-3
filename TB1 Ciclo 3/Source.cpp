@@ -6,8 +6,8 @@
 #include "GestorCheckin.h"
 
 int main() {
-    srand(time(NULL));
-    portada(); getch();
+    srand(static_cast<unsigned int>(time(nullptr)));
+    portada(); cin.get();
 
     GestorUsuarios gUsuario; gUsuario.leerUsuarios();
 
@@ -187,7 +187,7 @@ int main() {
                 system("cls"); menuCheckin(); cin >> opc;
                 switch (opc)
                 {
-                case 1: //ver checkin waza               
+                case 1: //ver reservas (todas) waza               
                     gCheckIn.mostrarCheckinsPorUsuario();
                     system("pause");
                     break;
