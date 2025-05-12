@@ -2,7 +2,3 @@ Ale
 Asto
 ale@correo.com
 123456789
-Patricia
-Guimaray
-aaaa@gmail.com
-87654321
