@@ -208,8 +208,6 @@ int main() {
                 system("cls"); menuCheckin(); cin >> opc;
                 switch (opc)
                 {
-                case 1: //muestra todas las reservas
-                    gReservas.mostrarReservas();
                 case 1: //ver checkin waza               
                     gCheckIn.mostrarCheckinsPorUsuario();
                     system("pause");
