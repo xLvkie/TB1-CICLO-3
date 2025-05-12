@@ -57,7 +57,16 @@ public:
     int getMesVuelta() { return mesVuelta; }
     int getCodigoVuelo() { return codigoVuelo; }
     int getPrecio() { return precio; }
+    void setCodigoVuelo(int codigoVuelo) { this->codigoVuelo = codigoVuelo; }
     vector<Asiento*> getVectorAsientos() { return asientos; }
+
+    int getIndicePaisOrigen() {
+        for (int i = 0; i < 10; i++) {
+            if (origen == paises[i]) {
+                return i;
+            }
+        }
+    }
 
     Asiento* getAsiento(int idAsiento) {
         for (int i = 0; i < asientos.size(); i++)
