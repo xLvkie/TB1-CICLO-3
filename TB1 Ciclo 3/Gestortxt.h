@@ -55,7 +55,7 @@ public:
     T getLine(int i) {
         if(i >= 0 && i < lines.size())
         return lines[i];
-        return NULL;
+        return nullptr; //habia un error aca
     }
 
     void editarLinea(int i, T elem) {

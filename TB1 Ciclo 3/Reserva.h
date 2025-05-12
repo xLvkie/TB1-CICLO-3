@@ -26,9 +26,8 @@ public:
 	}
 	~Reserva(){}
 
-	void mostrar() {
-		cout << "\nPasajero: \n";
-		cout << user->getNombres() << " " << user->getApellidos() << endl;
+	void mostrarDatosVuelo() {
+		cout << "Vuelo: \n";
 		vuelo->mostrarVuelo();
 		cout << "Asientos: \n";
 		for (int i = 0; i < asiento.size(); i++)
@@ -36,6 +35,19 @@ public:
 			asiento[i]->mostrarAsiento();
 		}
 		cout << "Monto a pagar: " << precioFinal << endl; 
+	}
+
+	void mostrarDatosCompletos() {
+		cout << "Pasajero: " << user->getNombres() << ", " << user->getApellidos() << "\n";
+		cout << "DNI: " << user->getDni() << "\n";
+		cout << "Vuelo: \n";
+		vuelo->mostrarVuelo();
+		cout << "Asientos: \n";
+		for (int i = 0; i < asiento.size(); i++)
+		{
+			asiento[i]->mostrarAsiento();
+		}
+		cout << "Monto a pagar: " << precioFinal << endl;
 	}
 
 	Pasajero* getPasajero() { return user; }

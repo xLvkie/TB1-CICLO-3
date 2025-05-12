@@ -3,7 +3,7 @@
 #include "GestorVuelo.h"
 #include "GestorReserva.h"
 #include "GestorUsuarios.h"
-#include "Checkin.h"
+#include "GestorCheckin.h"
 
 int main() {
     srand(time(NULL));
@@ -16,6 +16,7 @@ int main() {
     GestorReserva gReservas(gVuelos);
 
     CheckIn checkIn;
+    GestorCheckin gCheckIn;
 
     int opcion = 0;
     string destino, origen;
@@ -209,10 +210,12 @@ int main() {
                 {
                 case 1: //muestra todas las reservas
                     gReservas.mostrarReservas();
+                case 1: //ver checkin waza               
+                    gCheckIn.mostrarCheckinsPorUsuario();
                     system("pause");
                     break;
                 case 2: //validar checkin waza
-                    checkIn.procesarCheckIn(gReservas);
+                    gCheckIn.realizarCheckIn(gReservas);
                     system("pause");
                     break;
                 case 3:system("pause"); break; 

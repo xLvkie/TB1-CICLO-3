@@ -31,6 +31,7 @@ public:
 		cout << "\n === Reservar Vuelo ===\n";
 		cout << "Seleccione usuario: \n";
 		gUsuarios.mostrar();
+		cout << "Numero de usuario: ";
 		cin >> aux2;
 
 		Pasajero* pAux = gUsuarios.getLista().getDato(aux2 - 1);
@@ -90,7 +91,6 @@ public:
 
 		getch(); 
 			
-
 		Reserva a(vAux, asientos, pAux, calcularPrecioFinal());
 
 		reservas.push(a);
@@ -103,7 +103,7 @@ public:
 
 		while (!reservas.estaVacia()) {
 			Reserva val = reservas.pop();
-			val.mostrar();
+			val.mostrarDatosVuelo();
 			aux.push(val);
 		}
 

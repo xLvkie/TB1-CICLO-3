@@ -87,6 +87,8 @@ void seleccionPais() {
 	cout << "10. Italia\n";
 }
 
+// --- Menu Checkin --- ///
+
 void menuCheckin() {
 	cout << "=====| Menu de Check in |=====\n";
 	cout << "1. Ver reservas\n";
