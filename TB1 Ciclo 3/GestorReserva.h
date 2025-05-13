@@ -32,6 +32,12 @@ public:
 		cout << "\n === Reservar Vuelo ===\n";
 		cout << "Seleccione usuario: \n";
 
+		//Para que no continue si no hay usuarios registrados
+		if (gUsuarios.getLista().esVacio()) {
+			cout << "No hay usuarios registrados.\n";
+			return;
+		}
+
 		gUsuarios.getLista().mostrarPasajero();
 		cout << "Numero de usuario: ";
 		cin >> aux2;
@@ -41,7 +47,7 @@ public:
 
 		cout << "Ingrese id del vuelo: "; cin >> aux; cout << "\n"; 
 
-		Vuelo* vAux = this->gVuelos.getVueloPorCodigo(aux); //system("pause");
+		Vuelo* vAux = this->gVuelos.getVueloPorCodigo(aux);
 		if (vAux == nullptr) return; //REGRESA SI EL VUELO NO EXISTE 
 		Asiento* aAux;
 
