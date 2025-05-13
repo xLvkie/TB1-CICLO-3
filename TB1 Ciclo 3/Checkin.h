@@ -21,14 +21,6 @@ public:
 		cout << "|===================================================|\n";
 	}
 
-	// --- Función algo demás --- //
-
-	void mostrarTarjeta(Reserva* reserva) {
-		if (reserva == nullptr) return;
-		cout << "|=============== TARJETA DE EMBARQUE ===============|\n";
-		reserva->mostrarDatosCompletos();
-		cout << "|===================================================|\n";
-	}
 
 	// --- Valida datos y procesa un Checkin y lo usamos en el GestorCheckIn --- //
 
