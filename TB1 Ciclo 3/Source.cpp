@@ -2,6 +2,7 @@
 
 int main() {
     srand(time(nullptr)); 
+    setlocale(LC_ALL, "");
     portada(); cin.get();
     
     GestorSistema sistema;
