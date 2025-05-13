@@ -16,7 +16,7 @@ int main() {
     GestorReserva gReservas(gVuelos, gUsuario);
 
     CheckIn checkIn;
-    GestorCheckin gCheckIn;
+    GestorCheckin gCheckIn(gUsuario);
 
     int opcion = 0;
     string destino, origen;

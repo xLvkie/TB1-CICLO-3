@@ -7,10 +7,11 @@
 class GestorCheckin {
 private:
     Cola<Reserva> checkinsExitosos;
-    GestorUsuarios gUsuarios;
+    GestorUsuarios& gUsuarios;
 
 public:
-    GestorCheckin() {}
+    GestorCheckin(GestorUsuarios& gestor) : gUsuarios(gestor) {}
+    ~GestorCheckin() {}
 
     // --- Realiza un CheckIn --- //
 
