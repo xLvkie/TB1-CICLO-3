@@ -21,6 +21,11 @@ int main() {
     int opcion = 0;
     string destino, origen;
 
+    //Lambda para validar los valores que se ingresan en dia y mes
+    auto validarDiaMes = [](int dia, int mes) {
+        return dia >= 1 && dia <= 31 && mes >= 1 && mes <= 12;
+        }; 
+
     do {
         system("cls"); menuPrincipal();
         cin >> opcion;
@@ -149,7 +154,7 @@ int main() {
                         selecionMesVuelo();
                         cout << "\nMes de Ida: "; cin >> auxMes;
 
-                        if ((auxDia < 1 || auxDia > 31) || (auxMes < 1 || auxMes > 12)) {
+                        if (!validarDiaMes(auxDia,auxMes)) {
                             cout << "Opcion no valida\n"; system("pause");
                         }
                     } while ((auxDia < 1 || auxDia > 31) || (auxMes < 1 || auxMes > 12));
@@ -182,7 +187,7 @@ int main() {
                         selecionMesVuelo();
                         cout << "\nMes de Ida: "; cin >> auxMesIda;
 
-                        if ((auxDiaIda < 1 || auxDiaIda > 31) || (auxMesIda < 1 || auxMesIda > 12)) {
+                        if (!validarDiaMes(auxDia, auxMes)) {
                             cout << "Opcion no valida\n"; system("pause");
                         }
                     } while ((auxDiaIda < 1 || auxDiaIda > 31) || (auxMesIda < 1 || auxMesIda > 12));
