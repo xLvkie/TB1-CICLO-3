@@ -9,10 +9,10 @@ private:
 	Pasajero* psj;
 
 public:
-	CheckIn(){}
-	~CheckIn(){}
+	CheckIn() {}
+	~CheckIn() {}
 
-	// --- FunciÛn algo dem·s --- //
+	// --- Funci√≥n algo dem√°s --- //
 
 	void mostrarTarjeta(Reserva* reserva) {
 		if (reserva == nullptr) return;
@@ -32,7 +32,7 @@ public:
 
 		cout << "Ingrese Codigo del vuelo: ";
 		cin >> codigoVuelo;
-		
+
 		Pila<Reserva> reservasAux = gestorReserva.getReservas(); //no referencia sino copia
 
 		while (!reservasAux.estaVacia()) {

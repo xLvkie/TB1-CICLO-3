@@ -19,7 +19,7 @@ public:
         Reserva* reservaConfirmada = checkin.procesarCheckIn(gestorReserva);
 
         if (reservaConfirmada != nullptr) {
-            checkinsExitosos.enqueue(*reservaConfirmada); 
+            checkinsExitosos.enqueue(*reservaConfirmada);
         }
     }
 
@@ -45,15 +45,8 @@ public:
     }
 
     // --- Muestra todos los CheckIns de un Pasajero --- //
-    //ayuda
-    void mostrarCheckinsPorUsuario() {
-        cout << "[DEBUG] Verificando si lista está vacía...\n";
-        if (gUsuarios.getLista().esVacio()) {
-            cout << "Lista vacía. No hay usuarios.\n";
-            cin.get();
-            return;
-        }
 
+    void mostrarCheckinsPorUsuario() {
         if (checkinsExitosos.esVacia()) {
             cout << "\nNo hay check-ins registrados.\n";
             return;
@@ -72,7 +65,7 @@ public:
         cin >> dni;
 
         if (!gUsuarios.getLista().validarDNI(dni)) {
-            cout << "No se encontró un pasajero con ese DNI.\n";
+            cout << "No se encontrÃ³ un pasajero con ese DNI.\n";
             return;
         }
 
@@ -87,8 +80,8 @@ public:
                 reserva.mostrarDatosCompletos();
                 hayCoincidencias = true;
             }
-
-            aux.enqueue(reserva); 
+          
+            aux.enqueue(reserva);
         }
 
         while (!aux.esVacia()) {
@@ -101,4 +94,4 @@ public:
     }
 };
 
-#endif
+#endif 

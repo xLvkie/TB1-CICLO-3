@@ -8,12 +8,12 @@
 int main() {
     srand(static_cast<unsigned int>(time(nullptr)));
     portada(); cin.get();
-
+  
     GestorUsuarios gUsuario; gUsuario.leerUsuarios();
 
     GestorVuelo gVuelos;
     gVuelos.generarVuelosAutomaticos();
-    GestorReserva gReservas(gVuelos);
+    GestorReserva gReservas(gVuelos, gUsuario);
 
     CheckIn checkIn;
     GestorCheckin gCheckIn;
@@ -38,17 +38,15 @@ int main() {
                 case 1:
                     // -- Registro de pasajero --
                     system("cls"); tituloUsuario();
-
                     gUsuario.agregarUsuario();
 
-                    // -- Conclusión --
                     cout << "Operación conluida correctamente\n";
                     system("pause"); break;
                 case 2:
                     // -- Mostrar Pasajeros ---
                     system("cls"); tituloUsuario();
                     gUsuario.mostrar();
-                    // -- Conclusión --
+
                     system("pause"); break;
                 case 3: system("pause"); break;
                 default: cout << "Opcion no valida\n"; system("pause"); break;
@@ -67,11 +65,34 @@ int main() {
                 case 1:
                     // -- Mostrar Todos los Vuelos --
                     system("cls"); tituloVuelo();
-                    gVuelos.mostrarTodosLosVuelos();
-                    
-                    gReservas.reservar(); 
-                    
-                    system("pause"); break;
+                    int auxSubMenu;
+                    do { // SubMenu de Ordenamiento
+                        system("cls"); subMenuTodosLosVuelos();
+                        cin >> auxSubMenu;
+                        cin.ignore();
+
+                        switch (auxSubMenu) { //AQUI SE HACEN LAS RESERVAS
+                        case 1:
+                            system("cls"); cout << "=== Ordenamiento por Precio ===\n"; 
+                            gVuelos.ordenarTodosLosVuelosPorPrecio(); 
+                            gReservas.reservar();
+                            system("pause"); break;
+                        case 2:
+                            system("cls"); cout << "=== Ordenamiento por Pais de Origen ===\n";
+                            gVuelos.ordenarTodosLosVuelosPorPais(); 
+                            gReservas.reservar(); 
+                            system("pause"); break;
+                        case 3: 
+                            system("cls"); cout << "=== Ordenamiento por Id Vuelo ===\n";
+                            gVuelos.ordenarTodosLosVuelosPorId();
+                            gReservas.reservar(); 
+                            system("pause"); break;
+                        case 4: system("pause"); break;
+                        default: cout << "Opcion no valida\n"; system("pause"); break;
+                        }
+                    } while (auxSubMenu != 4);
+
+                    break;
                 case 2:
                     // -- Validar Datos --
                     int auxValor;
@@ -187,18 +208,21 @@ int main() {
                 system("cls"); menuCheckin(); cin >> opc;
                 switch (opc)
                 {
-                case 1: //ver reservas (todas) waza               
+                case 1: //tarjetas embarque
                     gCheckIn.mostrarCheckinsPorUsuario();
-                    system("pause");
-                    break;
-                case 2: //validar checkin waza
+                    system("pause"); break;
+                case 2: //reservas
+                    gReservas.mostrarReservas();
+                    system("pause"); break;
+                case 3: //chekcin
                     gCheckIn.realizarCheckIn(gReservas);
-                    system("pause");
+                    system("pause"); break;
+                case 4:
                     break;
-                case 3:system("pause"); break; 
-                default: cout << "Opción no válida\n"; system("pause"); break;
+                default:
+                    cout << "Opción no válida\n"; system("pause"); break;
                 }
-            } while (opc != 3);
+            } while (opc != 4);
             break;
 
         case 4: cout << "Gracias por usar el sistema\n"; system("pause"); break;
@@ -207,5 +231,6 @@ int main() {
 
     } while (opcion != 4);
 
+    system("pause>0"); 
     return 0;
 }

@@ -15,8 +15,7 @@ public:
 	~GestorUsuarios(){}
 
     void leerUsuarios() {
-        pLista = Lista<Pasajero*>();
-
+        pLista = Lista<Pasajero*>(); 
         for (int i = 0; i < archivo.size(); i += 4)
         {
             if (archivo.size() >= i + 4) {
@@ -58,7 +57,7 @@ public:
         }
 
         Pasajero* nuevoPasajero = new Pasajero(nombres, apellidos, correo, dniStr);
-        //el error esta aca (segun el guru) lo de abajo es una prueba para ver si lo soluciona pero no :v
+
         getLista().insertarFinal(nuevoPasajero);
 
         archivo.agregar(nombres);
@@ -66,7 +65,7 @@ public:
         archivo.agregar(correo);
         archivo.agregar(dniStr);
 
-        leerUsuarios();
+        //EL leerUsuarios(); BORRABA TODOS LOS DATOS
 
         return nuevoPasajero;
     }

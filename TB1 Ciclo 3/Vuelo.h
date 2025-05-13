@@ -57,7 +57,17 @@ public:
     int getMesVuelta() { return mesVuelta; }
     int getCodigoVuelo() { return codigoVuelo; }
     int getPrecio() { return precio; }
+    void setCodigoVuelo(int codigoVuelo) { this->codigoVuelo = codigoVuelo; }
     vector<Asiento*> getVectorAsientos() { return asientos; }
+
+    int getIndicePaisOrigen() {
+        for (int i = 0; i < 10; i++) {
+            if (origen == paises[i]) {
+                return i;
+            }
+        }
+        return 1;
+    }
 
     Asiento* getAsiento(int idAsiento) {
         for (int i = 0; i < asientos.size(); i++)
@@ -83,29 +93,6 @@ public:
         {
             asientos[i]->mostrarAsientoDisponible();
 
-        }
-    }
-    void ordenarAsientosPorClasificacion() {
-        for (int i = 0; i < asientos.size() - 1; i++)
-        {
-            for (int j = 0; j < asientos.size() - 1 - i; j++)
-            {
-                if (asientos[j]->getClasificacion() < asientos[j + 1]->getClasificacion()) {
-                    swap(asientos[j], asientos[j + 1]);
-                }
-            }
-        }
-    }
-
-    void ordenarAsientosPorEstado() {
-        for (int i = 0; i < asientos.size() - 1; i++)
-        {
-            for (int j = 0; j < asientos.size() - 1 - i; j++)
-            {
-                if (asientos[j]->isEstado() < asientos[j + 1]->isEstado()) {
-                    swap(asientos[j], asientos[j + 1]);
-                }
-            }
         }
     }
 };

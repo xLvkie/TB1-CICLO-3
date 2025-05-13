@@ -59,6 +59,14 @@ void menuVuelos() {
 	cout << "6. Salir\n";
 }
 
+void subMenuTodosLosVuelos() {
+	cout << "=====|  Como desea ordenar todos los vuelos  |=====\n";
+	cout << "1. Por precio\n";
+	cout << "2. Por pais de Origen\n";
+	cout << "3. Por codigo de vuelo\n";
+	cout << "4. Salir\n";
+}
+
 void tituloVuelo() {
 	cout << "=====|  Menu de Vuelos  |=====\n";
 }
@@ -83,9 +91,10 @@ void seleccionPais() {
 
 void menuCheckin() {
 	cout << "=====| Menu de Check in |=====\n";
-	cout << "1. Ver reservas\n";
-	cout << "2. Check in\n";
-	cout << "3. Salir\n";
+	cout << "1. Ver tarjetas de embarque\n";
+	cout << "2. Ver reservas\n";
+	cout << "3. Check in\n";
+	cout << "4. Salir\n";
 }
 
 #endif // !__SISTEMA__
