@@ -7,9 +7,12 @@ class CheckIn {
 private:
 	Reserva* reserva;
 	Pasajero* psj;
-
+	int puerta, hora; 
 public:
-	CheckIn() {}
+	CheckIn() {
+		puerta = 100 + rand() % (299 + 1 - 100); 
+		hora = 0 + rand() % 24;
+	}
 	~CheckIn() {}
 
 	// --- Función algo demás --- //
@@ -18,6 +21,8 @@ public:
 		if (reserva == nullptr) return;
 		cout << "|=============== TARJETA DE EMBARQUE ===============|\n";
 		reserva->mostrarDatosCompletos();
+		cout << "Puerta: " << puerta << endl; 
+		cout << "Hora de Embarque: " << hora << ":00 hrs\n";
 		cout << "|===================================================|\n";
 	}
 
