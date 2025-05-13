@@ -38,17 +38,15 @@ int main() {
                 case 1:
                     // -- Registro de pasajero --
                     system("cls"); tituloUsuario();
-
                     gUsuario.agregarUsuario();
 
-                    // -- Conclusión --
                     cout << "Operación conluida correctamente\n";
                     system("pause"); break;
                 case 2:
                     // -- Mostrar Pasajeros ---
                     system("cls"); tituloUsuario();
                     gUsuario.mostrar();
-                    // -- Conclusión --
+
                     system("pause"); break;
                 case 3: system("pause"); break;
                 default: cout << "Opcion no valida\n"; system("pause"); break;
@@ -67,11 +65,34 @@ int main() {
                 case 1:
                     // -- Mostrar Todos los Vuelos --
                     system("cls"); tituloVuelo();
-                    gVuelos.mostrarTodosLosVuelos();
-                    
-                    gReservas.reservar(); 
-                    
-                    system("pause"); break;
+                    int auxSubMenu;
+                    do { // SubMenu de Ordenamiento
+                        system("cls"); subMenuTodosLosVuelos();
+                        cin >> auxSubMenu;
+                        cin.ignore();
+
+                        switch (auxSubMenu) {
+                        case 1:
+                            system("cls"); cout << "=== Ordenamiento por Precio ===\n"; 
+                            gVuelos.ordenarTodosLosVuelosPorPrecio(); 
+                            gReservas.reservar();
+                            system("pause"); break;
+                        case 2:
+                            system("cls"); cout << "=== Ordenamiento por Pais de Origen ===\n";
+                            gVuelos.ordenarTodosLosVuelosPorPais(); 
+                            gReservas.reservar(); 
+                            system("pause"); break;
+                        case 3: 
+                            system("cls"); cout << "=== Ordenamiento por Id Vuelo ===\n";
+                            gVuelos.ordenarTodosLosVuelosPorId();
+                            gReservas.reservar(); 
+                            system("pause"); break;
+                        case 4: system("pause"); break;
+                        default: cout << "Opcion no valida\n"; system("pause"); break;
+                        }
+                    } while (auxSubMenu != 4);
+
+                    break;
                 case 2:
                     // -- Validar Datos --
                     int auxValor;
@@ -187,16 +208,15 @@ int main() {
                 system("cls"); menuCheckin(); cin >> opc;
                 switch (opc)
                 {
-                case 1: //ver reservas (todas) waza               
-                    gCheckIn.mostrarCheckinsPorUsuario();
-                    system("pause");
-                    break;
-                case 2: //validar checkin waza
-                    gCheckIn.realizarCheckIn(gReservas);
-                    system("pause");
-                    break;
-                case 3:system("pause"); break; 
-                default: cout << "Opción no válida\n"; system("pause"); break;
+                case 1:
+                    gReservas.mostrarReservas(); 
+                    system("pause"); break;
+                case 2:
+                    gCheckIn.realizarCheckIn(gReservas); 
+                    system("pause"); break;
+                case 3: break;
+                default:
+                    cout << "Opción no válida\n"; system("pause"); break;
                 }
             } while (opc != 3);
             break;
@@ -207,5 +227,6 @@ int main() {
 
     } while (opcion != 4);
 
+    system("pause>0"); 
     return 0;
 }
