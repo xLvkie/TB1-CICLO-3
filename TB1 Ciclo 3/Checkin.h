@@ -12,7 +12,16 @@ public:
 	CheckIn() {}
 	~CheckIn() {}
 
-	// --- Funci�n algo dem�s --- //
+	// --- Función algo demás --- //
+
+	void mostrarTarjeta(Reserva* reserva) {
+		if (reserva == nullptr) return;
+		cout << "|=============== TARJETA DE EMBARQUE ===============|\n";
+		reserva->mostrarDatosCompletos();
+		cout << "|===================================================|\n";
+	}
+
+	// --- Función algo demás --- //
 
 	void mostrarTarjeta(Reserva* reserva) {
 		if (reserva == nullptr) return;
