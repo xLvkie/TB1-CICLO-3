@@ -36,7 +36,6 @@ public:
 
 		Pasajero* pAux = gUsuarios.getLista().getDato(aux2-1);
 
-
 		cout << "Ingrese id del vuelo: "; cin >> aux;
 
 		Vuelo* vAux = this->Gvuelo.getVueloPorCodigo(aux); //system("pause");

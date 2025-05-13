@@ -75,7 +75,7 @@ public:
         pLista.mostrarPasajero();
     }
 
-    Lista<Pasajero*> getLista() {
+    Lista<Pasajero*>& getLista() {
         return pLista;
     }
 };
