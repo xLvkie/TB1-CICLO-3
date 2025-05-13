@@ -66,6 +66,7 @@ public:
                 return i;
             }
         }
+        return 1;
     }
 
     Asiento* getAsiento(int idAsiento) {

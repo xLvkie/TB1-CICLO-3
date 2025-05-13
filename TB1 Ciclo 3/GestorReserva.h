@@ -13,17 +13,17 @@ class GestorReserva
 {
 private:
 	Pila<Reserva> reservas;
-	GestorVuelo Gvuelo;
-	GestorUsuarios gUsuarios;
+	GestorVuelo& gVuelos;
+	GestorUsuarios& gUsuarios;
+	//SE PASA POR REFERENCIA YA QUE ANTES COMO QUE SE CREABA UNA NUEVA LISTA DE USUARIOS 
 	
 public:
-	GestorReserva(GestorVuelo&Gvuelo){
-		this->Gvuelo = Gvuelo;
-	}
+	GestorReserva(GestorVuelo& gVuelos, GestorUsuarios& gUsuarios)
+		: gVuelos(gVuelos), gUsuarios(gUsuarios) {}
 	~GestorReserva(){}
 
 	void reservar() {
-		gUsuarios.leerUsuarios(); 
+		//EL leerUsuarios(); BORRABA TODOS LOS DATOS
 		int aux; int numAsientos; int aux2 = 0; int auxExcesoPorVip = 0; int cont = 0;
 		char opc;
 		cout << "Desea reservar un vuelo y/n: "; cin >> opc;
@@ -31,7 +31,8 @@ public:
 		
 		cout << "\n === Reservar Vuelo ===\n";
 		cout << "Seleccione usuario: \n";
-		gUsuarios.mostrar();
+
+		gUsuarios.getLista().mostrarPasajero();
 		cout << "Numero de usuario: ";
 		cin >> aux2;
 
@@ -40,7 +41,7 @@ public:
 
 		cout << "Ingrese id del vuelo: "; cin >> aux; cout << "\n"; 
 
-		Vuelo* vAux = this->Gvuelo.getVueloPorCodigo(aux); //system("pause");
+		Vuelo* vAux = this->gVuelos.getVueloPorCodigo(aux); //system("pause");
 		if (vAux == nullptr) return; //REGRESA SI EL VUELO NO EXISTE 
 		Asiento* aAux;
 
@@ -89,8 +90,6 @@ public:
 
 		cout << "\nEscogio " << cont << " VIP y " << numAsientos - cont << " Economico\n"; 
 		cout << "Monto a pagar: " << calcularPrecioFinal() << endl << endl;
-
-		getch(); 
 			
 		Reserva a(vAux, asientos, pAux, calcularPrecioFinal());
 

@@ -22,9 +22,9 @@ public:
 	bool esVacio();
 	void mostrarPasajero();
 	T getDato(int index);
-	bool validarDNI(string dni); 
 
 	bool test(string nombres, string apellidos, string correo, string dni);
+	bool validarDNI(string dni);
 };
 
 // ---
@@ -119,8 +119,6 @@ bool Lista<T>::test(string nombres, string apellidos, string correo, string dni)
 		nodo = nodo->siguiente;
 	}
 	return false;
-
-	
 }
 
 template<class T>

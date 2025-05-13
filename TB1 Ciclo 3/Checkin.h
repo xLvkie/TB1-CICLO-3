@@ -15,7 +15,7 @@ public:
 	}
 	~CheckIn() {}
 
-	// --- FunciÛn algo dem·s --- //
+	// --- Funci√≥n algo dem√°s --- //
 
 	void mostrarTarjeta(Reserva* reserva) {
 		if (reserva == nullptr) return;

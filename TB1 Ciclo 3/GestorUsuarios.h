@@ -58,13 +58,14 @@ public:
 
         Pasajero* nuevoPasajero = new Pasajero(nombres, apellidos, correo, dniStr);
 
+        getLista().insertarFinal(nuevoPasajero);
+
         archivo.agregar(nombres);
         archivo.agregar(apellidos);
         archivo.agregar(correo);
         archivo.agregar(dniStr);
 
-        leerUsuarios();
-        //pLista.insertarFinal(nuevoPasajero); 
+        //EL leerUsuarios(); BORRABA TODOS LOS DATOS
 
         return nuevoPasajero;
     }
@@ -73,7 +74,7 @@ public:
         pLista.mostrarPasajero();
     }
 
-    Lista<Pasajero*> getLista() {
+    Lista<Pasajero*>& getLista() {
         return pLista;
     }
 };

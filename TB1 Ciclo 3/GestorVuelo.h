@@ -197,7 +197,7 @@ public:
 
     void ordenarTodosLosVuelosPorPrecio() {
         vector<Vuelo*> todos = obtenerTodosLosVuelos();
-        int n = todos.size();
+        size_t n = todos.size();
 
         //Ordenamiento de selección
         for (int i = 0; i < n - 1; i++) {
@@ -223,7 +223,7 @@ public:
 
     void ordenarTodosLosVuelosPorId() {
         vector<Vuelo*> todos = obtenerTodosLosVuelos();
-        int n = todos.size();
+        size_t n = todos.size();
         bool ordenado; 
 
         //Ordenamiento de Bubble Sort
@@ -248,7 +248,7 @@ public:
 
     void ordenarTodosLosVuelosPorPais() {
         vector<Vuelo*> todos = obtenerTodosLosVuelos();
-        int n = todos.size();
+        size_t n = todos.size();
         int k; 
 
         //Ordenamiento de Insercion

@@ -6,14 +6,14 @@
 #include "GestorCheckin.h"
 
 int main() {
-    srand(time(NULL));
-    portada(); getch();
-
+    srand(static_cast<unsigned int>(time(nullptr)));
+    portada(); cin.get();
+  
     GestorUsuarios gUsuario; gUsuario.leerUsuarios();
 
     GestorVuelo gVuelos;
     gVuelos.generarVuelosAutomaticos();
-    GestorReserva gReservas(gVuelos);
+    GestorReserva gReservas(gVuelos, gUsuario);
 
     CheckIn checkIn;
     GestorCheckin gCheckIn;
@@ -76,7 +76,7 @@ int main() {
                         cin >> auxSubMenu;
                         cin.ignore();
 
-                        switch (auxSubMenu) {
+                        switch (auxSubMenu) { //AQUI SE HACEN LAS RESERVAS
                         case 1:
                             system("cls"); cout << "=== Ordenamiento por Precio ===\n"; 
                             gVuelos.ordenarTodosLosVuelosPorPrecio(); 
@@ -213,17 +213,21 @@ int main() {
                 system("cls"); menuCheckin(); cin >> opc;
                 switch (opc)
                 {
-                case 1:
-                    gReservas.mostrarReservas(); 
+                case 1: //tarjetas embarque
+                    gCheckIn.mostrarCheckinsPorUsuario();
                     system("pause"); break;
-                case 2:
-                    gCheckIn.realizarCheckIn(gReservas); 
+                case 2: //reservas
+                    gReservas.mostrarReservas();
                     system("pause"); break;
-                case 3: break;
+                case 3: //chekcin
+                    gCheckIn.realizarCheckIn(gReservas);
+                    system("pause"); break;
+                case 4:
+                    break;
                 default:
                     cout << "Opción no válida\n"; system("pause"); break;
                 }
-            } while (opc != 3);
+            } while (opc != 4);
             break;
 
         case 4: cout << "Gracias por usar el sistema\n"; system("pause"); break;
