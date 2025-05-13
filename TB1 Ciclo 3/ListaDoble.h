@@ -22,6 +22,7 @@ public:
 	bool esVacio();
 	void mostrarPasajero();
 	T getDato(int index);
+	bool validarDNI(string dni); 
 
 	bool test(string nombres, string apellidos, string correo, string dni);
 };
@@ -85,8 +86,8 @@ void Lista<T>::mostrarPasajero() {
 	int i = 1;
 	while (nodo != nullptr) {
 		/*Pasajero* psj = (Pasajero*)(nodo->dato);*/ //Pasajero apunta a psj con valor Pasajero que apunta al dato del nodo
-		Pasajero* psj = static_cast<Pasajero*>(nodo->dato);
-		cout << "# " << i++ << ". ---\n";
+		Pasajero* psj = static_cast<Pasajero*>(nodo->dato); 
+		cout << "# " << i++ << ". ---\n"; 
 		cout << psj->toString();
 		cout << "->\n";
 
@@ -137,6 +138,22 @@ T Lista<T>::getDato(int index) {
 
 	cout << "Fuera de rango"; system("pause>0");
 	return nullptr;
+}
+
+template<class T>
+bool Lista<T>::validarDNI(string dni) {
+	Nodo<T>* nodo = inicio;
+
+	while (nodo != nullptr) {
+		Pasajero* psj = static_cast<Pasajero*>(nodo->dato);
+
+		if (psj->getDni() == dni) {
+			return true;
+		}
+
+		nodo = nodo->siguiente;
+	}
+	return false;
 }
 
 #endif // !__LISTA_DOBLE__

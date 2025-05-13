@@ -23,6 +23,7 @@ public:
 	~GestorReserva(){}
 
 	void reservar() {
+		gUsuarios.leerUsuarios(); 
 		int aux; int numAsientos; int aux2 = 0; int auxExcesoPorVip = 0; int cont = 0;
 		char opc;
 		cout << "Desea reservar un vuelo y/n: "; cin >> opc;
@@ -34,7 +35,7 @@ public:
 		cout << "Numero de usuario: ";
 		cin >> aux2;
 
-		Pasajero* pAux = gUsuarios.getLista().getDato(aux2 - 1);
+		Pasajero* pAux = gUsuarios.getLista().getDato(aux2 - 1); 
 
 
 		cout << "Ingrese id del vuelo: "; cin >> aux; cout << "\n"; 
@@ -103,7 +104,7 @@ public:
 
 		while (!reservas.estaVacia()) {
 			Reserva val = reservas.pop();
-			val.mostrarDatosVuelo();
+			val.mostrarDatosCompletos();
 			aux.push(val);
 		}
 

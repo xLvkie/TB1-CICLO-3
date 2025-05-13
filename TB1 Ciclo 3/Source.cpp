@@ -208,18 +208,15 @@ int main() {
                 system("cls"); menuCheckin(); cin >> opc;
                 switch (opc)
                 {
-                case 1: //muestra todas las reservas
-                    gReservas.mostrarReservas();
-                case 1: //ver checkin waza               
-                    gCheckIn.mostrarCheckinsPorUsuario();
-                    system("pause");
-                    break;
-                case 2: //validar checkin waza
-                    gCheckIn.realizarCheckIn(gReservas);
-                    system("pause");
-                    break;
-                case 3:system("pause"); break; 
-                default: cout << "Opción no válida\n"; system("pause"); break;
+                case 1:
+                    gReservas.mostrarReservas(); 
+                    system("pause"); break;
+                case 2:
+                    gCheckIn.realizarCheckIn(gReservas); 
+                    system("pause"); break;
+                case 3: break;
+                default:
+                    cout << "Opción no válida\n"; system("pause"); break;
                 }
             } while (opc != 3);
             break;

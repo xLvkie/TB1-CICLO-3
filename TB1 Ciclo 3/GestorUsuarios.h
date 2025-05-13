@@ -15,8 +15,7 @@ public:
 	~GestorUsuarios(){}
 
     void leerUsuarios() {
-        pLista = Lista<Pasajero*>();
-
+        pLista = Lista<Pasajero*>(); 
         for (int i = 0; i < archivo.size(); i += 4)
         {
             if (archivo.size() >= i + 4) {
@@ -65,6 +64,7 @@ public:
         archivo.agregar(dniStr);
 
         leerUsuarios();
+        //pLista.insertarFinal(nuevoPasajero); 
 
         return nuevoPasajero;
     }
