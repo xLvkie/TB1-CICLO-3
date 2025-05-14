@@ -9,7 +9,7 @@ using namespace std;
 
 //Funciones auxiliares
 
-//Lambda para validar los valores que se ingresan en dia y mes
+//Lambdas para validar lo valores
 auto validarDiaMes = [](int dia, int mes) {
     return dia >= 1 && dia <= 31 && mes >= 1 && mes <= 12;
     };
