@@ -105,7 +105,7 @@ public:
 		cout << "\nEscogio " << cont << " VIP y " << numAsientos - cont << " Economico\n"; 
 		cout << "Monto a pagar: " << calcularPrecioFinal() << endl << endl;
 
-		cout << "Confirmar la reserva: y/n"; cin >> opc; if (!confirmar(opc)) return;
+		cout << "Confirmar la reserva: y/n: "; cin >> opc; if (!confirmar(opc)) return;
 			
 		Reserva a(vAux, asientos, pAux, calcularPrecioFinal());
 
