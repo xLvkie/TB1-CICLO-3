@@ -27,13 +27,13 @@ private:
 	Pila<Reserva> reservas;
 	GestorVuelo& gVuelos;
 	GestorUsuarios& gUsuarios;
-	Descuento* descuento;  
+	Descuento* descuento;
 	//SE PASA POR REFERENCIA YA QUE ANTES COMO QUE SE CREABA UNA NUEVA LISTA DE USUARIOS 
 
 public:
 	GestorReserva(GestorVuelo& gVuelos, GestorUsuarios& gUsuarios)
 		: gVuelos(gVuelos), gUsuarios(gUsuarios) {
-		descuento = new Descuento; 
+		descuento = new Descuento;
 	}
 	~GestorReserva() {}
 
@@ -45,14 +45,14 @@ public:
 		char opc = ' ';
 		string texto;
 
-		if(!rutasValidas.empty()){
+		if (!rutasValidas.empty()) {
 			ubicar(35, 4); cout << BG_WHITE << BLACK << "Ruta a reservar: "; ingresarDato(n);
 			aux3 = static_cast<int>(rutasValidas[n].size());
 		}
 		else {
 			aux3 = 1;
 		}
-		
+
 		for (int i = 0; i < aux3; i++)
 		{
 			aux = 0; numAsientos = 0; aux2 = 0; auxExcesoPorVip = 0; cont = 0; auxDescuento = 0.0f;
@@ -113,7 +113,7 @@ public:
 				{
 					ubicar(x, y++); cout << "Ingrese el id: "; ingresarDato(aux2);
 					aAux = vAux->getAsiento(aux2);
-					if (aAux == nullptr) { ubicar(x, y++); "Asiento no válido."; limpiarDerecha(); return; }
+					if (aAux == nullptr) { ubicar(x, y++); "Asiento no valido."; limpiarDerecha(); return; }
 					if (!asientoValido(aAux)) { ubicar(x, y++); cout << "Asiento ocupado"; }
 					if (y > 21) { y -= 7; x += 20; }
 
@@ -168,26 +168,6 @@ public:
 		}
 	}
 
-	void mostrarReservas() {
-		if (!reservas.estaVacia()) {
-			Pila<Reserva> aux;
-
-			while (!reservas.estaVacia()) {
-				Reserva val = reservas.pop();
-				val.mostrarDatosCompletos(31, 4);
-				aux.push(val);
-			}
-
-			while (!aux.estaVacia()) {
-				reservas.push(aux.pop());
-			}
-		}
-
-		else {
-			cout << BG_WHITE << BLACK;
-			ubicar(32, 4); cout << "No hay ninguna reserva";
-		}
-	}
 
 	void mostrarMisReservas(Pasajero* pasajero) {
 
@@ -212,47 +192,14 @@ public:
 		}
 	}
 
-	void mostrarTodasLasReservas() {
-		if (reservas.estaVacia()) {
-			cout << BG_WHITE << BLACK;
-			ubicar(32, 4); cout << "No hay ninguna reserva";
-			return;
-		}
-
-		vector<Reserva*> todos = obtenerTodasLasReservas(reservas);
-		iterarPaginas(todos);
-
-		for (Reserva* r : todos) {
-			delete r;
-		}
-	}
-
-	vector<Reserva*> obtenerTodasLasReservas(Pila<Reserva>& reservas) {
-		vector<Reserva*> todas;
-		Pila<Reserva> aux;
-
-		while (!reservas.estaVacia()) {
-			Reserva r = reservas.pop();
-			Reserva* copia = new Reserva(r); 
-			todas.push_back(copia);
-			aux.push(r); // restauramos la pila
-		}
-
-		while (!aux.estaVacia()) {
-			reservas.push(aux.pop());
-		}
-
-		return todas;
-	}
-
-	vector<Reserva*> obtenerMisReservas(Pila<Reserva>& reservas, Pasajero*pasajero) {
+	vector<Reserva*> obtenerMisReservas(Pila<Reserva>& reservas, Pasajero* pasajero) {
 		vector<Reserva*> todas;
 		Pila<Reserva> aux;
 
 		while (!reservas.estaVacia()) {
 			Reserva r = reservas.pop();
 			Reserva* copia = new Reserva(r);
-			if(copia->getPasajero() == pasajero)todas.push_back(copia);
+			if (copia->getPasajero() == pasajero)todas.push_back(copia);
 			aux.push(r); // restauramos la pila
 		}
 
@@ -290,7 +237,7 @@ public:
 		int inicio = pagina * reservasPorPaginas;
 		int fin = min(inicio + reservasPorPaginas, (int)reservas.size());
 
-		int x1 = 32, x2 = 70;	
+		int x1 = 32, x2 = 72;
 		int yInicio = 4;
 		int espacioVertical = 13;
 
@@ -302,11 +249,11 @@ public:
 			int x = (columna == 0) ? x1 : x2;
 			int y = yInicio + fila * espacioVertical;
 
-			if(rutas){
+			if (rutas) {
 				reservas[i]->mostrarinCompletos(x, y);
 			}
 			else
-			reservas[i]->mostrarDatosCompletos(x, y);
+				reservas[i]->mostrarDatosCompletos(x, y);
 		}
 
 		ubicar(30, 1);
@@ -321,7 +268,7 @@ public:
 	}
 
 	void mostrarHashDescuentos() {
-		descuento->mostrarTablaDebug(); 
+		descuento->mostrarTablaDebug();
 	}
 };
 
